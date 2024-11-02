@@ -30,13 +30,13 @@ This is a prototype of a web applicaton. It will be deployed temporaryly as a de
 ## Credits
 ### API Usage
 In order to make our web application feasible within the technology and time constraints of the Hackathon.<br>
-This will need to be cleaned up.
+**This will need to be cleaned up.***
 - Leaflet GeoSearch - https://github.com/smeijer/leaflet-geosearch | https://leafletjs.com/
 
 
 ### AI Usage
 Generative AI was used in the code base of the project. The following are listed instances of usage and its purpose.
-
+**This will need to be cleaned up.**
 - Generative AI from Pixlr were used to generate the Local Pioneer logo.
 
 ## Contributors
@@ -54,7 +54,7 @@ Contacts: connorthefudge@gmail.com | github.com/xenoyle
 
 ### Eisa Chaudhary
 University of South Carolina at Beaufort | Class of 2025<br>
-Contacts: EISA@email.uscb.edu | **\0**
+Contacts: EISA@email.uscb.edu | github.com/Eisa2003
 
 ## License
 CC0-1.0, CC-BY-4.0, and CC-BY-SA-4.0 are open licenses used for non-software material ranging from datasets to videos. Note that Creative Commons does not recommend its licenses be used for software or hardware.
