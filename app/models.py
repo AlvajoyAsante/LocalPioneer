@@ -20,7 +20,7 @@ class User(db.Model):
 
     # Permissions
     is_volunteer = db.Column(db.Boolean, default=False)
-    is_originator = db.Column(db.Boolean, default=False)
+    is_organizer = db.Column(db.Boolean, default=False)
     is_active = db.Column(db.Boolean, default=True)
     is_staff = db.Column(db.Boolean, default=False)
     is_superuser = db.Column(db.Boolean, default=False)
