@@ -62,7 +62,7 @@ class Event(db.Model):
     def __repr__(self):
         return f'<Event {self.title}>'
     
-class map(db.Model):
+class Map(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     # Map information
@@ -70,4 +70,4 @@ class map(db.Model):
     
 
     def __repr__(self):
-        return f'<map {self.title}>'
+        return f'<Map {self.title}>'
