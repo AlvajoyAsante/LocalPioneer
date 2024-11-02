@@ -1,10 +1,39 @@
-body{
+body {
     font-family: 'Arial';
     font-size: 22px;
     background-color: #F6F6DB;
 }
 
-.navbar{
+.navbar {
     background-color: #38422B;
     padding: 0px 10px 0px 10px;
+}
+
+.navbar-brand {
+    margin-right: 35px;
+    font-size: 30px;
+    font-family: 'Script';
+    /* Apply the cursive font */
+}
+
+.navbar-brand::before {
+    position: absolute;
+    content: "";
+    display: block;
+    height: 40px;
+    /* Adjust height if necessary */
+    background-color: #38422B;
+    animation: typing 2s steps(40) forwards;
+    /* Adding delay after each iteration */
+}
+
+@media only screen and (max-width: 990px) {
+
+    .navbar {
+        padding: 10px 10px 10px 10px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
 }
