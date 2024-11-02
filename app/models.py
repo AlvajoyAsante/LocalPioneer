@@ -23,7 +23,7 @@ class User(Base):
 
     # Permissions
     is_volunteer = Column(Boolean, default=False)
-    is_originator = Column(Boolean, default=False)
+    is_organizer = Column(Boolean, default=False)
     is_active = Column(Boolean, default=True)
     is_staff = Column(Boolean, default=False)
     is_superuser = Column(Boolean, default=False)

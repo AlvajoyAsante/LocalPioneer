@@ -1,0 +1,56 @@
+<style>
+    /* Style for centering the form */
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        /* Full viewport height */
+    }
+
+    /* Optional styling for the logo */
+    .logo {
+        display: block;
+        margin-inline: auto;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="center">
+    <div class="container">
+        <!-- Logo centered above the form -->
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo" height="400px"
+            width="400px">
+
+        <form>
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="email" id="form2Example1" class="form-control" />
+                <label class="form-label" for="form2Example1">Username / Email address</label>
+            </div>
+
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="password" id="form2Example2" class="form-control" />
+                <label class="form-label" for="form2Example2">Password</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"
+                style="background-color: #687a50;">Sign in</button>
+
+
+            <!-- Register buttons -->
+            <div class="text-center">
+                <a href="#!">Forgot Password?</a>
+            </div>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p>Not a member? <a href="#!">Register</a></p>
+            </div>
+
+
+        </form>
+    </div>
+</div>

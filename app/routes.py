@@ -7,9 +7,11 @@ main = Blueprint("main", __name__)
 
 @main.route('/')
 def home():
-    
-
     return render_template("main.html", page_name="feed_page") 
+
+@main.route('/Login')
+def login():
+    return render_template("main.html", page_name="login") 
 
 
 
