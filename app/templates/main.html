@@ -2,21 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Local Pioneer {{page_name}}</title>
 </head>
 <body>
-    <main>
-        <h1>Home</h1>
-        <p>{{text}}</p>
-        {% if dark_mode == True %}
-            <p>Dark mode is enabled</p>
-        {% else %}
-            <p>Dark mode is disabled</p>
+    <div class="phone-screen">
+        <!-- Content of the screen goes here -->
+         
+        {% if page_name == "login" %}
+            {% include 'login.html' %}
+        {% elif page_name == "signup" %}
+            {% include 'signup.html' %}
+        {% elif page_name == "feed_page" %}
+            {% include 'feed_page.html' %}
+        {% elif page_name == "profile_page" %}
+            {% include 'profile_page.html' %}
+        {% elif page_name == "network" %}
+            {% include 'network.html' %}
+        {% elif page_name == "map" %}
+            {% include 'map.html' %}
         {% endif %}
-    </main>
-    <footer>
-        <p>&copy; 2020</p>
-    </footer>    
+
+    </div>
 </body>
 </html>
