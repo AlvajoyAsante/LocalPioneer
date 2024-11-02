@@ -56,8 +56,8 @@ class Event(db.Model):
     is_other = db.Column(db.Boolean, default=False)
 
     # Foreign Key
-    originator_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    originator = db.relationship('User', backref='events')
+    organizer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    organizer = db.relationship('User', backref='events')
 
     def __repr__(self):
         return f'<Event {self.title}>'
