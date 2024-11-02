@@ -1,4 +1,4 @@
-# LocalPioneer
+# Local Pioneer
 A community volunteering web application
 
 ## About the Project
@@ -29,10 +29,15 @@ This is a prototype of a web applicaton. It will be deployed temporaryly as a de
 
 ## Credits
 ### API Usage
-In order to make our web application feasible within the technology and time constraints of the Hackathon.
+In order to make our web application feasible within the technology and time constraints of the Hackathon.<br>
+This will need to be cleaned up.
+- Leaflet Gosearch - https://github.com/smeijer/leaflet-geosearch | https://leafletjs.com/
+
 
 ### AI Usage
 Generative AI was used in the code base of the project. The following are listed instances of usage and its purpose.
+
+- Generative AI from Pixlr were used to generate the Local Pioneer logo.
 
 ## Contributors
 ### Alvajoy Asante
