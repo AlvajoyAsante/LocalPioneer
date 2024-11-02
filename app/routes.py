@@ -13,6 +13,10 @@ def home():
 def login():
     return render_template("main.html", page_name="login") 
 
+@main.route('/map')
+def login():
+    return render_template("main.html", page_name="map") 
+
 
 
 
