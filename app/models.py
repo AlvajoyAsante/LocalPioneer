@@ -68,6 +68,5 @@ class map(db.Model):
     # Map information
     coordinate = db.Column(db.String(100), nullable=False) 
     
-
     def __repr__(self):
         return f'<map {self.title}>'
