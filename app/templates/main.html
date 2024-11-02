@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>Local Pioneer | {{page_name}}</title>
 
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
@@ -15,7 +18,7 @@
 
 <body>
     <!-- Cell Phone Screen -->
-    <div class="phone-screen">
+    <div >
         {% if page_name == "login" %}
         {% include 'login.html' %}
         {% elif page_name == "signup" %}
@@ -28,6 +31,19 @@
         {% include 'network.html' %}
         {% elif page_name == "map" %}
         {% include 'map.html' %}
+        {% endif %}
+
+        <!-- Bottom Navigation -->
+        {% if page_name == "feed_page" or page_name == "profile_page" or page_name == "network" or page_name == "map" %}
+
+        <div class="bottom-nav">
+            <div class="alert alert-primary" role="alert">
+                A simple primary alert—check it out!
+              </div>
+            <div>b</div>
+            <div>c</div>
+        </div>
+
         {% endif %}
     </div>
 

@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.extensions import Base
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Time, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, Time, ForeignKey, Float
 
 class User(Base):
     __tablename__ = 'user'
@@ -37,16 +37,30 @@ class User(Base):
     def __repr__(self):
         return f'<User {self.email}>'
 
+class Network(Base):
+    __tablename__ = 'followers'
+
+    id = Column(Integer, primary_key=True)
+
+    # Follower information
+    follower_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    followed_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f'<Followers {self.follower_id}>'
+
 class Event(Base):
     __tablename__ = 'event'
 
     id = Column(Integer, primary_key=True)
 
+    # Event information
     title = Column(String(100), nullable=False)
     description = Column(String(500), nullable=False)
     location = Column(String(100), nullable=False)
     date = Column(DateTime, nullable=False)
     time = Column(Time, nullable=False)
+    image = Column(String(100), nullable=True)
     
     # Flags for event status
     is_active = Column(Boolean, default=True)
@@ -77,7 +91,8 @@ class Map(Base):
     event_id = Column(Integer, ForeignKey('event.id'), nullable=False)
 
     # Map information
-    coordinate = Column(String(100), nullable=False) 
-    
+    latitude = Column(Float, nullable=False)
+    longitude = Column(Float, nullable=False)
+        
     def __repr__(self):
         return f'<Map {self.event_id}>'
