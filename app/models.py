@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.extensions import Base
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Time, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, Time, ForeignKey, Relationship
 
 class User(Base):
     __tablename__ = 'user'
@@ -19,6 +19,7 @@ class User(Base):
     interests = Column(String(500), nullable=True)
     following = Column(String(500), nullable=True)
     network = Column(String(500), nullable=True)
+    background_image = Column(String(100), nullable=True)
 
     # Permissions
     is_volunteer = Column(Boolean, default=False)
@@ -62,6 +63,7 @@ class Event(Base):
     # Foreign Key
     organizer_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     # organizer = relationship('User', backref='events')
+    o
 
     def __repr__(self):
         return f'<Event {self.title}>'
@@ -71,8 +73,11 @@ class Map(Base):
 
     id = Column(Integer, primary_key=True)
 
+    # Event Id
+    event_id = Column(Integer, ForeignKey('event.id'), nullable=False)
+
     # Map information
     coordinate = Column(String(100), nullable=False) 
     
     def __repr__(self):
-        return f'<Map {self.title}>'
+        return f'<Map {self.event_id}>'

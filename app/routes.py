@@ -10,10 +10,5 @@ def home():
     return "Welcome to the Home Page!"
 
 
-# @main.route('/login')
-# def login():
-    # return render_template('login.html')
-
-
 
 
