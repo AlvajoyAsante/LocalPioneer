@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.extensions import Base
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Time, ForeignKey, Relationship
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, Time, ForeignKey
 
 class User(Base):
     __tablename__ = 'user'
