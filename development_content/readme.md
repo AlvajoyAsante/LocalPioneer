@@ -1,0 +1,1 @@
+This is where all idea files for the hackathon belong.

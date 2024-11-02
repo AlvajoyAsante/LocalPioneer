@@ -1,0 +1,94 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables and config files
+.env
+*.env
+# config.py  # If your config contains sensitive information
+
+# Virtual environment
+venv/
+.env/
+*.venv
+pip-selfcheck.jsong
+
+# Python egg and cache files
+*.egg-info/
+.eggs/
+*.egg
+*.whl
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+sdist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Database files
+*.db
+*.sqlite3
+
+# Logs and debugging files
+*.log
+*.bak
+*.swp
+*.swo
+*.err
+*.out
+logs/
+
+# Static and compiled files
+staticfiles/
+static/
+media/
+
+# Flask session and cache
+instance/
+*.session
+*.cache
+__pycache__/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# macOS system files
+.DS_Store
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# PyCharm
+*.py[cod]
+*.idea/
+*.vscode/
+*.iml
+
+# Testing and coverage files
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+.cache
+.pytest_cache/
+htmlcov/
+
+# Docker files
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Ignore requirements.txt backup
+requirements.txt.bak
+
+# Ignore Gunicorn and deployment files
+*.pid
+*.sock
