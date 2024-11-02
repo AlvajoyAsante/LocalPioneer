@@ -31,7 +31,7 @@ This is a prototype of a web applicaton. It will be deployed temporaryly as a de
 ### API Usage
 In order to make our web application feasible within the technology and time constraints of the Hackathon.<br>
 This will need to be cleaned up.
-- Leaflet Gosearch - https://github.com/smeijer/leaflet-geosearch | https://leafletjs.com/
+- Leaflet GeoSearch - https://github.com/smeijer/leaflet-geosearch | https://leafletjs.com/
 
 
 ### AI Usage

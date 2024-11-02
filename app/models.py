@@ -63,7 +63,7 @@ class Event(Base):
     # Foreign Key
     organizer_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     # organizer = relationship('User', backref='events')
-    o
+    
 
     def __repr__(self):
         return f'<Event {self.title}>'
