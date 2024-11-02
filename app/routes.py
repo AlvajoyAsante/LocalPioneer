@@ -6,8 +6,10 @@ from app.models import User, Event, Map
 main = Blueprint("main", __name__)
 
 @main.route('/')
-def home(): 
-    return "Welcome to the Home Page!"
+def home():
+    
+
+    return render_template("main.html", page_name="feed_page") 
 
 
 
