@@ -1,12 +1,19 @@
-from flask import Flask
+from flask import Blueprint, render_template
+from app.models import User, Event, Map
 
-app = Flask(__name__)
 
-@app.route('/')
-def home():
+# Create a blueprint object
+main = Blueprint("main", __name__)
+
+@main.route('/')
+def home(): 
     return "Welcome to the Home Page!"
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+# @main.route('/login')
+# def login():
+    # return render_template('login.html')
+
+
 
 
