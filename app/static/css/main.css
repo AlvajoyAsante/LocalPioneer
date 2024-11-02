@@ -1,0 +1,24 @@
+/* Body styles for centering */
+body, html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f5; /* Light background for contrast */
+}
+
+/* Phone screen styles */
+.phone-screen {
+    width: 375px; /* Typical mobile width */
+    height: 667px; /* Typical mobile height */
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
