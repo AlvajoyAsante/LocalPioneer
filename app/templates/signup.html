@@ -1,0 +1,119 @@
+<style>
+    body {
+        background-color: #F6F6DB;
+    }
+
+    /* Style for centering the form */
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        /* Full viewport height */
+    }
+
+    /* Optional styling for the logo */
+    .logo {
+        display: block;
+        margin-inline: auto;
+        margin-bottom: 2px;
+    }
+</style>
+
+<div>
+    <div class="container" style="width: 80vh;">
+        <!-- Logo centered above the form -->
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo" width="200px">
+
+        <div style="">
+            <center>
+                <h1><i>Welcome to Local Pioneer!</i></h1>
+                <hr style="border: 1px solid #000;">
+            </center>
+        </div>
+
+        <form>
+            <!-- First Name -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form2Example1">First Name</label>
+                <input type="text" id="form2Example1" class="form-control" />
+            </div>
+
+            <!-- Last Name -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form2Example1">Last Name</label>
+                <input type="text" id="form2Example1" class="form-control" />
+            </div>
+
+
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form2Example1">Email address</label>
+                <input type="email" id="form2Example1" class="form-control" />
+            </div>
+
+            <!--- Username Input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form2Example1">Username</label>
+                <input type="text" id="form2Example1" class="form-control" />
+            </div>
+
+            <!-- Age (scroller) -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="age">Age</label>
+                <input type="number" id="form2Example1" class="form-control" min="1" />
+
+            </div>
+
+
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form2Example2">Password</label>
+                <input type="password" id="form2Example2" class="form-control" />
+
+            </div>
+
+            <!-- Retype Password input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form2Example2">Retype Password</label>
+                <input type="password" id="form2Example2" class="form-control" />
+            </div>
+
+            <!-- Interests dropdown -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="interests">Interests</label>
+                <div id="interests" class="d-flex flex-wrap">
+                    <div style="padding: 5px;">
+                        <input type="checkbox" id="Volunteering">
+                        <label for="Volunteering">
+                            Volunteering
+                        </label>
+                    </div>
+                    <div style="padding: 5px;">
+                        <input type="checkbox" value="" id="Workshop">
+                        <label for="Workshop">
+                            Workshop
+                        </label>
+                    </div>
+                    <div style="padding: 5px;">
+                        <input type="checkbox" value="" id="Fundraiser">
+                        <label for="Fundraiser"></label>
+                            Fundraiser
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Submit button -->
+            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"
+                style="background-color: #687a50;">Register</button>
+
+
+            <!-- Register buttons -->
+            <div class="text-center" style="padding-bottom: 50px;">
+                <p>Have an account? <a href="#!">Login</a></p>
+            </div>
+        </form>
+    </div>
+</div>

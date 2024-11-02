@@ -10,8 +10,7 @@ main = Blueprint("main", __name__)
 def home():
     # Check if the user is logged in
     # If the user is logged in, show the feed page
-    # If the user is not logged in, show the login page
-    
+    # If the user is not logged in, show the login page    
 
 
     return render_template("main.html", page_name="feed_page") 
