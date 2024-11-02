@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Local Pioneer {{page_name}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
     <div class="phone-screen">
         <!-- Content of the screen goes here -->
-         
+
         {% if page_name == "login" %}
             {% include 'login.html' %}
         {% elif page_name == "signup" %}
