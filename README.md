@@ -43,7 +43,7 @@ Contacts: aasante@charlotte.edu | github.com/AlvajoyAsante
 Computer Science Student at UNC-Charlotte | Class of 2026<br>
 Contacts: aisikhue@charlotte.edu | https://github.com/Taotlema
 
-### Connor **\0**
+### Connor Floyd
 University of South Carolina at Beaufort | Class of 2027<br>
 Contacts: connorthefudge@gmail.com | **\0**
 
