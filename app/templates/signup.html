@@ -33,7 +33,7 @@
         </div>
 
         <!-- Signup Form -->
-        <form method="post" action="{{ url_for('main.signup') }}">
+        <form method="POST" action="{{ url_for('main.signup') }}">
 
             <!-- Flash Messages -->
             {% with messages = get_flashed_messages() %}
@@ -82,7 +82,7 @@
         
             <!-- Interests Checkboxes -->
             <div class="form-outline mb-4">
-                <label class="form-label" for="interests">Interests</label>
+                <label class="form-label" for="interests">Volunteering Interests</label>
                 <div id="interests" class="d-flex flex-wrap">
                     <div style="padding: 5px;">
                         <input type="checkbox" id="Volunteering" name="interests" value="Volunteering">
@@ -90,11 +90,15 @@
                     </div>
                     <div style="padding: 5px;">
                         <input type="checkbox" id="Workshop" name="interests" value="Workshop">
-                        <label for="Workshop">Workshop</label>
+                        <label for="Workshop">Workshops</label>
                     </div>
                     <div style="padding: 5px;">
                         <input type="checkbox" id="Fundraiser" name="interests" value="Fundraiser">
-                        <label for="Fundraiser">Fundraiser</label>
+                        <label for="Fundraiser">Fundraising</label>
+                    </div>
+                    <div style="padding: 5px;">
+                        <input type="checkbox" id="Socializing" name="Socializing" value="Socializing">
+                        <label for="Socializing">Socializing</label>
                     </div>
                 </div>
             </div>

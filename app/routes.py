@@ -31,7 +31,6 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
         
-        
         user = db.session.query(User).filter_by(email=email).first()
         
         if user and user.check_password(password):
@@ -62,7 +61,7 @@ def signup():
             return redirect(url_for('main.signup'))
         
         if 'user_id' in session:
-            if len(session['user_id']) == 0 or session['user_id'] == None:
+            if session['user_id'] == None:
                 user = db.session.query(User).filter_by(id=session['user_id']).first()
                 
                 if user:
@@ -79,8 +78,6 @@ def signup():
         new_user.set_password(password)
         db.session.add(new_user)
         db.session.commit()
-
-        session['user_id'] = new_user.id
 
         return redirect(url_for('main.home'))
 
