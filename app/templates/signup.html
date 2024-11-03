@@ -25,97 +25,86 @@
         <!-- Logo centered above the form -->
         <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo" width="200px">
 
-        <div style="">
+        <div>
             <center>
                 <h1><i>Welcome to Local Pioneer!</i></h1>
                 <hr style="border: 1px solid #000;">
             </center>
         </div>
 
-        <form>
+        <!-- Signup Form -->
+        <form method="post" action="{{ url_for('main.signup') }}">
+
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-warning" role="alert">
+                {{ messages.pop() }}
+            </div>
+            {% endif %}
+            {% endwith %}
+        
             <!-- First Name -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form2Example1">First Name</label>
-                <input type="text" id="form2Example1" class="form-control" />
+                <label class="form-label" for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" class="form-control" required />
             </div>
-
+        
             <!-- Last Name -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form2Example1">Last Name</label>
-                <input type="text" id="form2Example1" class="form-control" />
+                <label class="form-label" for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lastname" class="form-control" required />
             </div>
-
-
+        
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form2Example1">Email address</label>
-                <input type="email" id="form2Example1" class="form-control" />
+                <label class="form-label" for="email">Email address</label>
+                <input type="email" id="email" name="email" class="form-control" required />
             </div>
-
-            <!--- Username Input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form2Example1">Username</label>
-                <input type="text" id="form2Example1" class="form-control" />
-            </div>
-
+        
             <!-- Age (scroller) -->
             <div data-mdb-input-init class="form-outline mb-4">
                 <label class="form-label" for="age">Age</label>
-                <input type="number" id="form2Example1" class="form-control" min="1" />
-
+                <input type="number" id="age" name="age" class="form-control" min="1" required />
             </div>
-
-
+        
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form2Example2">Password</label>
-                <input type="password" id="form2Example2" class="form-control" />
-
+                <label class="form-label" for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required />
             </div>
-
+        
             <!-- Retype Password input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form2Example2">Retype Password</label>
-                <input type="password" id="form2Example2" class="form-control" />
+                <label class="form-label" for="repassword">Retype Password</label>
+                <input type="password" id="repassword" name="repassword" class="form-control" required />
             </div>
-
-            <!-- Interests dropdown -->
+        
+            <!-- Interests Checkboxes -->
             <div class="form-outline mb-4">
                 <label class="form-label" for="interests">Interests</label>
                 <div id="interests" class="d-flex flex-wrap">
                     <div style="padding: 5px;">
-                        <input type="checkbox" id="Volunteering">
-                        <label for="Volunteering">
-                            Volunteering
-                        </label>
+                        <input type="checkbox" id="Volunteering" name="interests" value="Volunteering">
+                        <label for="Volunteering">Volunteering</label>
                     </div>
                     <div style="padding: 5px;">
-                        <input type="checkbox" value="" id="Workshop">
-                        <label for="Workshop">
-                            Workshop
-                        </label>
+                        <input type="checkbox" id="Workshop" name="interests" value="Workshop">
+                        <label for="Workshop">Workshop</label>
                     </div>
                     <div style="padding: 5px;">
-                        <input type="checkbox" value="" id="Fundraiser">
-                        <label for="Fundraiser"></label>
-                        Fundraiser
-                        </label>
+                        <input type="checkbox" id="Fundraiser" name="interests" value="Fundraiser">
+                        <label for="Fundraiser">Fundraiser</label>
                     </div>
                 </div>
             </div>
-
-
-            <!-- Submit button -->
-            <form method="POST" action="/signup">
-                <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"
-                    style="background-color: #687a50 !important;">Register</button>
-            </form>
-
-
-            <!-- Register buttons -->
-            <div class="text-center" style="padding-bottom: 50px;">
-                <p>Have an account? <a href="/login">Login</a></p>
-            </div>
+        
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"
+                style="background-color: #687a50 !important;">Register</button>
         </form>
+
+        <div class="text-center" style="padding-bottom: 50px;">
+            <p>Have an account? <a href="/login">Login</a></p>
+        </div>
     </div>
 </div>

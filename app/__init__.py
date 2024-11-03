@@ -6,8 +6,10 @@ def create_application(config_filename=None):
     app = Flask(__name__)
 
     configure_app(app, config_filename)
-    configure_extensions(app)
     register_blueprints(app)
+
+    with app.app_context():
+        db.create_all()
 
     return app
 
@@ -20,12 +22,7 @@ def configure_app(app, config_filename):
     app.config['SECRET_KEY'] = 'dev'
     app.config['DEBUG'] = True
 
-def configure_extensions(app):
-    with app.app_context():
-        db.init_app(app)
-        db.create_all()
-        db.session.commit()
-        print("\t Database tables created")
+    db.init_app(app)
 
 def register_blueprints(app):
     app.register_blueprint(main)

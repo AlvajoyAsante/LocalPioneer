@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for, request
+from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for, flash
 from app.models import User, Event, Map
-from app.extensions import db
+from app.extensions import db, DATABASE_URL
 from sqlalchemy import func, and_
 
 # Create a blueprint object
@@ -11,13 +11,15 @@ main = Blueprint("main", __name__)
 @main.route('/', methods=['GET', 'POST'])
 def home():
 
-    if request.method == 'POST':
-        if 'user_id' in session:
-            return render_template("main.html", page_name="feed_page")
-        else:
-            return render_template("main.html", page_name="login")
+    if 'user_id' in session:
+        if session['user_id'] == None:
+            return redirect(url_for('main.login'))
 
-    return render_template("main.html", page_name="feed_page") 
+        user = db.session.query(User).filter_by(id=session['user_id']).first()
+        if user:
+            return render_template("main.html", page_name="feed_page", user=user)
+
+    return render_template("main.html", page_name="login") 
 
 @main.route('/forgot_password', methods=['GET', 'POST'])
 def forgot_pass():
@@ -25,49 +27,96 @@ def forgot_pass():
 
 @main.route('/login', methods=['GET', 'POST'])
 def login():
-    # if request.method == 'POST':
-    #     email = request.form['email']
-    #     password = request.form['password']
-    #     user = User.query.filter_by(email=email).first()
-    #     if user and user.check_password(password):
-    #         session['user_id'] = user.id
-    #         return render_template("main.html", page_name="feed_page")
-    #     else:
-    #         return render_template("main.html", page_name="login")
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        
+        
+        user = db.session.query(User).filter_by(email=email).first()
+        
+        if user and user.check_password(password):
+            session['user_id'] = user.id
+            return render_template("main.html", page_name="feed_page", user=user)
+        else:
+            flash("Invalid email or password", "error")
+            return redirect(url_for('main.login'))
 
-    return render_template("main.html", page_name="login") 
+    return render_template("main.html", page_name="login")
 
 @main.route('/signup', methods=['GET', 'POST'])
 def signup():
-    # if request.method == 'POST':
-    #     email = request.form['email']
-    #     password = request.form['password']
-    #     user = User.query.filter_by(email=email).first()
-    #     if user:
-    #         return render_template("main.html", page_name="signup")
-    #     else:
-    #         new_user = User(email=email)
-    #         new_user.set_password(password)
-    #         db.session.add(new_user)
-    #         db.session.commit() 
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+        age = request.form.get('age')
+        interests = request.form.getlist('interests')  # For checkboxes
 
-    #         session['user_id'] = user.id
+        if not email or not password:
+            flash("Email and password are required", "error")
+            return redirect(url_for('main.signup'))
+        
+        if len(password) < 8:
+            flash("Password must be at least 8 characters", "error")
+            return redirect(url_for('main.signup'))
+        
+        if 'user_id' in session:
+            if len(session['user_id']) == 0 or session['user_id'] == None:
+                user = db.session.query(User).filter_by(id=session['user_id']).first()
+                
+                if user:
+                    flash("Email already registered", "error")
+                    return redirect(url_for('main.signup'))
+       
+        new_user = User(
+            email=email,
+            first_name=firstname,
+            last_name=lastname,
+            age=age,
+            interests=",".join(interests)
+        )
+        new_user.set_password(password)
+        db.session.add(new_user)
+        db.session.commit()
 
-    #         return render_template("main.html", page_name="feed_page")
+        session['user_id'] = new_user.id
+
+        return redirect(url_for('main.home'))
 
     return render_template("main.html", page_name="signup")
 
 @main.route('/profile', methods=['GET', 'POST'])
 def profile():
-    # if 'user_id' not in session:
-    #     return redirect(url_for('main.login'))
+    if 'user_id' not in session:
+        return redirect(url_for('main.login'))
+    else: 
+        if session['user_id'] == None:
+            return redirect(url_for('main.login'))
 
-    user = User.query.get(session['user_id']).first()
+    if request.method == 'POST':
+        user = User.query.get(session['user_id'])
+        user.first_name = request.form['first_name']
+        user.last_name = request.form['last_name']
+        user.email = request.form['email']
+        user.phone = request.form['phone']
+        user.bio = request.form['bio']
+        db.session.commit()
+
+    user = db.session.query(User).filter_by(id=session['user_id']).first()
     return render_template("main.html", page_name="profile", user=user)
 
 @main.route('/map')
 def map():
-    return render_template("main.html", page_name="map")
+    if 'user_id' not in session:
+        return redirect(url_for('main.login'))
+    else:
+        if session['user_id'] == None:
+            return redirect(url_for('main.login'))
+    
+    user = db.session.query(User).filter_by(id=session['user_id']).first()
+
+    return render_template("main.html", page_name="map", user=user)
 
 @main.route('/network', methods=['GET', 'POST'])
 def network():
@@ -75,7 +124,10 @@ def network():
 
 @main.route('/logout', methods=['GET', 'POST'])
 def logout():
-    return render_template("main.html", page_name="logout")
+    if 'user_id' in session and session['user_id'] != None:
+        session.pop('user_id', None)
+
+    return redirect(url_for('main.home'))
 
 # Organization pages
 

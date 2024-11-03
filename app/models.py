@@ -1,10 +1,10 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from app.extensions import Base
+from app.extensions import db
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, Time, ForeignKey, Float, LargeBinary
 
-class User(Base):
-    __tablename__ = 'user'
+class User(db.Model):
+    __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
 
@@ -12,6 +12,7 @@ class User(Base):
     email = Column(String(120), unique=True, nullable=False)
     first_name = Column(String(30), nullable=True)
     last_name = Column(String(30), nullable=True)
+    age = Column(Integer, nullable=True)
     password_hash = Column(String(128))
 
     # Profile information
@@ -35,19 +36,19 @@ class User(Base):
     def __repr__(self):
         return f'<User {self.email}>'
 
-class Network(Base):
+class Network(db.Model):
     __tablename__ = 'followers'
 
     id = Column(Integer, primary_key=True)
 
     # Follower information
-    follower_id = Column(Integer, ForeignKey('user.id'), nullable=False)
-    followed_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    # follower_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    # followed_id = Column(Integer, ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
         return f'<Followers {self.follower_id}>'
 
-class Event(Base):
+class Event(db.Model):
     __tablename__ = 'event'
 
     id = Column(Integer, primary_key=True)
@@ -73,14 +74,14 @@ class Event(Base):
     is_other = Column(Boolean, default=False)
 
     # Foreign Key
-    organizer_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    # organizer_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     # organizer = relationship('User', backref='events')
     
 
     def __repr__(self):
         return f'<Event {self.title}>'
     
-class Map(Base):
+class Map(db.Model):
     __tablename__ = 'map'
 
     id = Column(Integer, primary_key=True)

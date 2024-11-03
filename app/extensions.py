@@ -6,7 +6,3 @@ from pathlib import Path
 db = SQLAlchemy()
 
 DATABASE_URL = "sqlite:///main.db" 
-
-engine = create_engine(DATABASE_URL, echo=True) 
-
-Base = declarative_base() 
