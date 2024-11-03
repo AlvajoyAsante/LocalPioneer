@@ -155,7 +155,15 @@ def delete_profile():
 
 @main.route('/settings')
 def settings():
-    return render_template("main.html", page_name="settings")
+    if 'user_id' in session:
+        if session['user_id'] == None:
+            return redirect(url_for('main.login'))
+
+        user = db.session.query(User).filter_by(id=session['user_id']).first()
+        if user:
+            return render_template("main.html", page_name="settings", user=user)
+
+    return redirect(url_for('main.home'))
 
 @main.route('/messages')
 def messages():
