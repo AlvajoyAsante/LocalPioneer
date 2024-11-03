@@ -1,312 +1,282 @@
 <style>
-  .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #F6F6DB;
-  }
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #F6F6DB;
+    }
 
-  #map-page {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 80%;
-    max-width: 1000px;
-  }
+    #map-page {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 80%;
+        max-width: 1000px;
+    }
 
-  #map {
-    height: 400px;
-    width: 100%;
-    background-color: #e5e5e5;
-    /* Placeholder color */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+    #map {
+        height: 400px;
+        width: 100%;
+        background-color: #e5e5e5;
+        /* Placeholder color */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-  .search-box {
-    padding: 20px;
-    background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+    .search-box {
+        padding: 20px;
+        background-color: white;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-  .search-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
+    .search-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
 
-  .checkbox-group {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
+    .checkbox-group {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
 
-  .checkbox-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
+    .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
 
-  .address-section {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+    .address-section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
 
-  .address-input-group {
-    display: flex;
-    gap: 10px;
-  }
+    .address-input-group {
+        display: flex;
+        gap: 10px;
+    }
 
-  .address-bar {
-    flex-grow: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+    .address-bar {
+        flex-grow: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-  .btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+    .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-  .btn-primary {
-    background-color: #007bff;
-    color: white;
-  }
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
 
-  .btn-secondary {
-    background-color: #6c757d;
-    color: white;
-  }
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
 
-  .saved-addresses {
-    width: 200px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+    .saved-addresses {
+        width: 200px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-  #map-buttons {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 10px;
-  }
+    #map-buttons {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
 </style>
 
 
 <div class="center">
-  <div id="map-page">
-    <!-- Map Container -->
-    <div id="map"></div>
+    <div id="map-page">
+        <!-- Map Container -->
+        <div id="map"></div>
 
-    <!-- Search Box -->
-    <div class="search-box">
-      <div class="search-title">What are you looking for?</div>
+        <!-- Search Box -->
+        <div class="search-box">
+            <div class="search-title">What are you looking for?</div>
 
-      <!-- Checkboxes -->
-      <div class="checkbox-group">
-        <label class="checkbox-item">
-            <input type="checkbox" id="volunteering-checkbox" value="volunteering" checked>
-            Volunteering
-        </label>
-        <label class="checkbox-item">
-            <input type="checkbox" id="workshop-checkbox" value="workshop" checked>
-            Workshop
-        </label>
-        <label class="checkbox-item">
-            <input type="checkbox" id="fundraiser-checkbox" value="fundraiser" checked>
-            Fundraiser
-        </label>
-        <label class="checkbox-item">
-            <input type="checkbox" id="social-checkbox" value="social" checked>
-            Social
-        </label>
-        <label class="checkbox-item">
-            <input type="checkbox" id="other-checkbox" value="other" checked>
-            Other
-        </label>
-    </div>
-    <div class="radius-control">
-        <select id="radius-select" class="form-select">
-            <option value="5">Within 5 km</option>
-            <option value="10" selected>Within 10 km</option>
-            <option value="25">Within 25 km</option>
-            <option value="50">Within 50 km</option>
-        </select>
-    </div>
+            <!-- Checkboxes -->
+            <div class="checkbox-group">
+                <label class="checkbox-item">
+                    <input type="checkbox" id="volunteering-checkbox" value="volunteering" checked>
+                    Volunteering
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" id="workshop-checkbox" value="workshop" checked>
+                    Workshop
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" id="fundraiser-checkbox" value="fundraiser" checked>
+                    Fundraiser
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" id="social-checkbox" value="social" checked>
+                    Social
+                </label>
+                <label class="checkbox-item">
+                    <input type="checkbox" id="other-checkbox" value="other" checked>
+                    Other
+                </label>
+            </div>
+            <div class="radius-control">
+                <select id="radius-select" class="form-select">
+                    <!-- Options will be added dynamically -->
+                </select>
+            </div>
 
-      <!-- Address Section -->
-      <div class="address-section">
-        <div class="address-input-group">
-          <input type="text" id="address-bar" class="address-bar" placeholder="Enter address...">
-          <button class="btn btn-secondary" onclick="addAddress()">Add to list</button>
+            <!-- Address Section -->
+            <div class="address-section">
+                <div class="address-input-group">
+                    <input type="text" id="address-bar" class="address-bar" placeholder="Enter address...">
+                </div>
+
+                
+            </div>
         </div>
-
-        <select id="saved-addresses" class="saved-addresses">
-          <option value="">-- Saved Addresses --</option>
-        </select>
-      </div>
     </div>
-  </div>
 </div>
 
 <script>
-  // Initialize Leaflet map
-  document.addEventListener('DOMContentLoaded', function () {
-    const map = L.map('map').setView([51.505, -0.09], 13);
-    const eventTypes = ['volunteering', 'workshop', 'fundraiser', 'social', 'other'];
-    let userMarker = null;
-    let radiusCircle = null;
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize map centered on United States
+        const map = L.map('map').setView([39.8283, -98.5795], 4); // Center of US
+        const eventTypes = ['volunteering', 'workshop', 'fundraiser', 'social', 'other'];
+        let userMarker = null;
+        let radiusCircle = null;
+        const activeMarkers = [];
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
-    // Sample markers for different categories
-    const markers = {
-      volunteering: [
-        { coords: [51.505, -0.09], label: "Volunteering Event 1" },
-        { coords: [51.515, -0.1], label: "Volunteering Event 2" }
-      ],
-      workshop: [
-        { coords: [51.52, -0.12], label: "Workshop 1" },
-        { coords: [51.53, -0.13], label: "Workshop 2" }
-      ],
-      fundraiser: [
-        { coords: [51.525, -0.08], label: "Fundraiser 1" },
-        { coords: [51.535, -0.07], label: "Fundraiser 2" }
-      ]
-    };
-
-    const activeMarkers = [];
-
-    // Function to update markers based on selected checkboxes
-    function updateMarkers() {
-      // Clear current markers
-      activeMarkers.forEach(marker => map.removeLayer(marker));
-      activeMarkers.length = 0;
-
-      // Get selected categories
-      if (document.getElementById('volunteering-checkbox').checked) {
-        markers.volunteering.forEach(event => {
-          const marker = L.marker(event.coords).addTo(map).bindPopup(event.label);
-          activeMarkers.push(marker);
-        });
-      }
-      if (document.getElementById('workshop-checkbox').checked) {
-        markers.workshop.forEach(event => {
-          const marker = L.marker(event.coords).addTo(map).bindPopup(event.label);
-          activeMarkers.push(marker);
-        });
-      }
-      if (document.getElementById('fundraiser-checkbox').checked) {
-        markers.fundraiser.forEach(event => {
-          const marker = L.marker(event.coords).addTo(map).bindPopup(event.label);
-          activeMarkers.push(marker);
-        });
-      }
-    }
-
-    // Listen for checkbox changes
-    document.getElementById('volunteering-checkbox').addEventListener('change', updateMarkers);
-    document.getElementById('workshop-checkbox').addEventListener('change', updateMarkers);
-    document.getElementById('fundraiser-checkbox').addEventListener('change', updateMarkers);
-
-    // Initialize markers on load
-    updateMarkers();
-
-    // Function to add new address to list
-    function addAddress() {
-      const addressInput = document.getElementById('address-bar');
-      const address = addressInput.value.trim();
-      if (address) {
-        const select = document.getElementById('saved-addresses');
-        const option = document.createElement('option');
-        option.text = address;
-        select.add(option);
-        addressInput.value = '';
-      }
-    }
-
-    window.addAddress = addAddress;
-  });
-
-    async function updateEventMarkers(userLat, userLng, radius) {
-        // Clear existing markers
-        activeMarkers.forEach(marker => map.removeLayer(marker));
-        activeMarkers.length = 0;
-        
-        // Update user location marker
-        if (userMarker) map.removeLayer(userMarker);
-        userMarker = L.marker([userLat, userLng], {
-            icon: L.divIcon({
-                className: 'user-location',
-                html: '📍',
-                iconSize: [25, 25]
-            })
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
         }).addTo(map);
-        
-        // Update radius circle
-        if (radiusCircle) map.removeLayer(radiusCircle);
-        radiusCircle = L.circle([userLat, userLng], {
-            radius: radius * 1000,
-            fillColor: '#007bff',
-            fillOpacity: 0.1,
-            color: '#007bff',
-            opacity: 0.3
-        }).addTo(map);
-        
-        try {
-            const response = await fetch(
-                `/api/events?lat=${userLat}&lng=${userLng}&radius=${radius}`
-            );
-            const events = await response.json();
-            
-            events.forEach(event => {
-                if (document.getElementById(`${event.type}-checkbox`).checked) {
-                    const marker = L.marker(event.coords)
-                        .bindPopup(`
-                            <strong>${event.name}</strong><br>
-                            ${event.description}<br>
-                            <small>${event.date} at ${event.time}</small>
-                        `)
-                        .addTo(map);
-                    activeMarkers.push(marker);
-                }
-            });
-            
-            // Fit bounds to include all markers
-            if (activeMarkers.length > 0) {
-                const bounds = L.latLngBounds([userMarker.getLatLng()]);
-                activeMarkers.forEach(marker => bounds.extend(marker.getLatLng()));
-                map.fitBounds(bounds, { padding: [50, 50] });
-            }
-            
-        } catch (error) {
-            console.error('Error fetching events:', error);
-        }
-    }
 
-    // Initialize all event listeners
-    document.addEventListener('DOMContentLoaded', function() {
+        // Update radius select options (roughly equivalent to 10, 25, and 50 miles)
         const radiusSelect = document.getElementById('radius-select');
-        
-        radiusSelect.addEventListener('change', () => {
-            getUserLocation();
+        radiusSelect.innerHTML = `
+          <option value="16">Within 16 km (~10 miles)</option>
+          <option value="40">Within 40 km (~25 miles)</option>
+          <option value="80">Within 80 km (~50 miles)</option>
+          <option value="161">Within 161 km (~100 miles)</option>
+      `;
+
+        // Function to geocode address
+        async function geocodeAddress(address) {
+            try {
+                const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&countrycodes=us`);
+                const data = await response.json();
+
+                if (data.length > 0) {
+                    const { lat, lon } = data[0];
+                    return { lat: parseFloat(lat), lng: parseFloat(lon) };
+                }
+                throw new Error('Address not found');
+            } catch (error) {
+                console.error('Geocoding error:', error);
+                return null;
+            }
+        }
+
+        // Function to handle address search
+        async function handleAddressSearch() {
+            const addressInput = document.getElementById('address-bar');
+            const address = addressInput.value.trim();
+
+            if (address) {
+                const coords = await geocodeAddress(address);
+                if (coords) {
+                    const radiusInKm = parseFloat(radiusSelect.value);
+
+                    // Update map view and fetch events
+                    map.setView([coords.lat, coords.lng], 12);
+                    updateEventMarkers(coords.lat, coords.lng, radiusInKm);
+                } else {
+                    alert('Address not found. Please try again.');
+                }
+            }
+        }
+
+        // Add event listener to address bar for Enter key
+        document.getElementById('address-bar').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                handleAddressSearch();
+            }
         });
 
+        // Modify updateEventMarkers function
+        async function updateEventMarkers(userLat, userLng, radiusKm) {
+            // Clear existing markers
+            activeMarkers.forEach(marker => map.removeLayer(marker));
+            activeMarkers.length = 0;
+
+            if (userMarker) map.removeLayer(userMarker);
+            if (radiusCircle) map.removeLayer(radiusCircle);
+
+            // Add user marker
+            userMarker = L.marker([userLat, userLng], {
+                icon: L.divIcon({
+                    className: 'user-location',
+                    html: '📍',
+                    iconSize: [25, 25]
+                })
+            }).addTo(map);
+
+            // Add radius circle
+            radiusCircle = L.circle([userLat, userLng], {
+                radius: radiusKm * 1000,
+                fillColor: '#007bff',
+                fillOpacity: 0.1,
+                color: '#007bff',
+                opacity: 0.3
+            }).addTo(map);
+
+            // Fit the map to show the entire circle with padding
+            map.fitBounds(radiusCircle.getBounds(), {
+                padding: [50, 50],
+                maxZoom: 20 // Prevent zooming in too close
+            });
+
+            try {
+                // ... rest of your event fetching code ...
+            } catch (error) {
+                console.error('Error fetching events:', error);
+            }
+        }
+
+        // Add a search button
+        const addressInputGroup = document.querySelector('.address-input-group');
+        const searchButton = document.createElement('button');
+        searchButton.className = 'btn btn-primary';
+        searchButton.textContent = 'Search';
+        searchButton.onclick = handleAddressSearch;
+        addressInputGroup.appendChild(searchButton);
+
+        // Initialize event listeners
         eventTypes.forEach(type => {
             document.getElementById(`${type}-checkbox`).addEventListener('change', () => {
-                getUserLocation();
+                const address = document.getElementById('address-bar').value.trim();
+                if (address) {
+                    handleAddressSearch();
+                }
             });
         });
 
-        // Initial load
-        getUserLocation();
+        radiusSelect.addEventListener('change', () => {
+            const address = document.getElementById('address-bar').value.trim();
+            if (address) {
+                handleAddressSearch();
+            }
+        });
     });
 </script>
