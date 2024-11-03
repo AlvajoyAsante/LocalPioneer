@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify, session
+from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for
 from app.models import User, Event, Map
 from app.extensions import db
 from sqlalchemy import func, and_
@@ -49,7 +49,7 @@ def signup(request):
             new_user = User(email=email)
             new_user.set_password(password)
             db.session.add(new_user)
-            db.session.commit()
+            db.session.commit() 
 
             session['user_id'] = user.id
 
@@ -59,6 +59,9 @@ def signup(request):
 
 @main.route('/profile', methods=['GET', 'POST'])
 def profile(request):
+    if 'user_id' not in session:
+        return redirect(url_for('main.login'))
+
     user = User.query.get(session['user_id']).first()
     return render_template("main.html", page_name="profile", user=user)
 
