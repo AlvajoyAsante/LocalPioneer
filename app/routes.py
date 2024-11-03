@@ -6,7 +6,6 @@ from sqlalchemy import func, and_
 # Create a blueprint object
 main = Blueprint("main", __name__)
 
-
 # Main Routes 
 @main.route('/', methods=['GET', 'POST'])
 def home():
@@ -167,17 +166,6 @@ def follow():
 @main.route('/unfollow')
 def unfollow():
     pass 
-    # return render_template("main.html", page_name="unfollow")
-
-# @main.route('/search')
-# def search():
-#     pass 
-    # return render_template("main.html", page_name="search")
-    
-# @main.route('/notifications')
-# def notifications():
-#     pass 
-    # return render_template("main.html", page_name="notifications")
 
 # API Routes
 
