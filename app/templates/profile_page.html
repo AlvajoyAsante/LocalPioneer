@@ -23,8 +23,14 @@
 
             <div class="d-flex flex-column ms-3">
                 <div>
-                    <h2 class="mb-1">Test</h2>
-                    <p class="text-muted">Bio</p>
+                    <h2 class="mb-1">{{user.first_name + ' ' + user.last_name}}</h2>
+                    <p class="text-muted">
+                        {% if user.bio %}
+                        {{user.bio}}
+                        {% else %}
+                        This user has not set a bio yet.
+                        {% endif %}
+                    </p>
                 </div>
                 <div>
                     <!-- Add this to the right of the bio -->

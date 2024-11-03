@@ -31,7 +31,6 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
         
-        
         user = db.session.query(User).filter_by(email=email).first()
         
         if user and user.check_password(password):
