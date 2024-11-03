@@ -5,7 +5,7 @@ from pathlib import Path
 
 db = SQLAlchemy()
 
-DATABASE_URL = "sqlite:///main.db?pitr=on&pitr_path=./main.db.pitr" 
+DATABASE_URL = "sqlite:///main.db" 
 
 engine = create_engine(DATABASE_URL, echo=True) 
 

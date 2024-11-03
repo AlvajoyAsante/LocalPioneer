@@ -5,10 +5,13 @@ from app.extensions import db, DATABASE_URL
 def create_application(config_filename=None):
     app = Flask(__name__)
 
-    # Load the default configuration
-    # app.config.from_object('app.config')
+    configure_app(app, config_filename)
+    configure_extensions(app)
+    register_blueprints(app)
 
-    # Optionally load instance-specific config (like secret keys, DB URIs)
+    return app
+
+def configure_app(app, config_filename):
     if config_filename:
         app.config.from_pyfile(config_filename)
         
@@ -17,14 +20,12 @@ def create_application(config_filename=None):
     app.config['SECRET_KEY'] = 'dev'
     app.config['DEBUG'] = True
 
+def configure_extensions(app):
+    with app.app_context():
+        db.init_app(app)
+        db.create_all()
+        db.session.commit()
+        print("\t Database tables created")
 
-    # Initialize extensions
-    db.init_app(app)
-
-    # Create the database
-    # db.create_all()
-
-    # Register blueprints
+def register_blueprints(app):
     app.register_blueprint(main)
-
-    return app
