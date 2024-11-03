@@ -13,12 +13,12 @@ This submission is for the HackNC 2024 project. Local Pioneer is a social applic
 
 ## TechStack
 ### Front End
-- ${\textsf{\color{purple}Bootstrap}}$
-- ${\textsf{\color{purple}HTML}}$
-- ${\textsf{\color{purple}CSS}}$
+- ${\textsf{\color{green}Bootstrap}}$
+- ${\textsf{\color{green}HTML}}$
+- ${\textsf{\color{green}CSS}}$
 ### Back End
-- ${\textsf{\color{purple}Flask}}$
-- ${\textsf{\color{purple}SQL Alchemy}}$
+- ${\textsf{\color{orange}Flask}}$
+- ${\textsf{\color{orange}SQL Alchemy}}$
 
 ## Usage
 This is a prototype of a web application. It will be deployed temporarily as a demo for the HackNC presentation. At most you can review our code for inspiration or to have a technical understanding of our project.
@@ -26,14 +26,28 @@ This is a prototype of a web application. It will be deployed temporarily as a d
 ## Credits
 ### API Usage
 #### Leaflet
-Leaflet's map API was utlizied in the making of this project and would be used to complete the following.
+Leaflet's map API was utilized in the making of this project and would be used to complete the following.
 - **Map Initialization:** The map, centered on the US, is created with L.map, using OpenStreetMap tiles for interactive visuals.
-- **Address Search and Geocoding:** Users enter an address, which is geocoded via the Nominatim API. The map centers on the location when "Search" is clicked.
 - **Event Radius and Type Filters:** Users select a search radius (10–100 miles). L.circle draws a radius on the map, showing event boundaries. Checkboxes allow filtering by event type. Only relevant events within the radius are shown.
-- **Marker Display:** Event markers appear on the map. "Display All Pins" shows all events, bypassing the radius filte
+- **Marker Display:** Event markers appear on the map. "Display All Pins" shows all events, bypassing the radius filter.
+
+#### Nominatim
+Nominatim's API was used to fetch the coordinates for each address.
+- **User Address:** Fetches address in address bar and transposes the map location to that address' coordinates.
+- **Address Search and Geocoding:** Users enter an address, which is geocoded via the Nominatim API. The map centers on the location when "Search" is clicked.
 
 ### AI Usage
-Generative AI was used in the code base of the project. Typicallying to expedite the learning and development process of the applications. The use of AI - ChatGPT was used in creating HTML templates for developers to then adjust and implement, and AI generated art from Pixlr for the logo of our project. AI would be used to help improve manually written material as well.
+Generative AI was used in the code base of the project, typically to expedite the learning and development process of the applications. The use of AI - ChatGPT was used in creating HTML templates for developers to then adjust and implement, and AI generated art from Pixlr for the logo of our project. AI would be used to help improve manually written material as well.
+
+AI Used - ChatGPT 4o, Blackbox, Claude 3.5 Sonnet
+
+AI-Assisted Content:
+logo.png - Image generation
+map.html - JavaScript and some CSS
+routes.py -  API Routes in Python
+__init__.py - Placeholder Data in Python
+
+
 
 ## Contributors
 ### Alvajoy Asante
