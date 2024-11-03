@@ -143,3 +143,37 @@ def get_event_type(event):
     elif event.is_social:
         return 'social'
     return 'other'
+
+
+@main.route('/api/map/coordinates', methods=['GET'])
+def get_coordinates():
+    try:
+        # Query all active events and their coordinates
+        coordinates = db.session.query(
+            Event.id,
+            Event.title,
+            Event.description,
+            Event.location,
+            Map.latitude,
+            Map.longitude
+        ).join(
+            Map, Event.id == Map.event_id
+        ).filter(
+            Event.is_active == True,
+            Event.is_cancelled == False
+        ).all()
+
+        # Format the data for the frontend
+        markers_data = [{
+            'event_id': coord.id,
+            'title': coord.title,
+            'description': coord.description,
+            'location': coord.location,
+            'lat': float(coord.latitude),
+            'lng': float(coord.longitude)
+        } for coord in coordinates]
+
+        return jsonify({'success': True, 'markers': markers_data})
+
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
