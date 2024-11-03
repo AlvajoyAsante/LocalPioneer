@@ -61,7 +61,7 @@ def signup():
             return redirect(url_for('main.signup'))
         
         if 'user_id' in session:
-            if len(session['user_id']) == 0 or session['user_id'] == None:
+            if session['user_id'] == None:
                 user = db.session.query(User).filter_by(id=session['user_id']).first()
                 
                 if user:
