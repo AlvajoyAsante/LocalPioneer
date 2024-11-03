@@ -1,22 +1,42 @@
 <div class="container mt-4 mb-4">
-
     <div class="card container_card p-4 shadow-sm">
 
         <h1 style="text-align: left;">Feed Page</h1>
 
-        <!-- Scrollable content -->
-
-        <div class="scrollable-content">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+        <!-- Post Input Section -->
+        <div class="post-input-section">
+            <div class="post-input">
+                <img src="../static/img/pfp.png" alt="User Image" class="user-image" width="50" height="50">
+                <input type="text" placeholder="Start a post..." class="post-input-field">
+            </div>
+            <div class="post-actions">
+                <button class="btn btn-secondary">Photo</button>
+                <button class="btn btn-secondary">Video</button>
+                <button class="btn btn-secondary">Event</button>
+                <button class="btn btn-secondary">Write Article</button>
             </div>
         </div>
-        
-    </div>
 
+        <!-- Scrollable Feed Section -->
+        <div class="scrollable-content">
+            <div class="post-card">
+                <div class="post-header">
+                    <img src="../static/img/pfp.png" alt="User Image" class="user-image" width="50" height="50">
+                    <div class="post-user-info">
+                        <h5 class="post-user-name">John Doe</h5>
+                        <p class="post-user-title">Loving neighbor</p>
+                    </div>
+                </div>
+                <p class="post-text">Here’s an example post on this feed page. This text represents the content of the
+                    post and can include descriptions, insights, or any other text-based content.</p>
+                <div class="post-actions">
+                    <button class="btn btn-light">Like</button>
+                    <button class="btn btn-light">Comment</button>
+                    <button class="btn btn-light">Share</button>
+                </div>
+            </div>
+            <!-- Repeat this .post-card div for additional posts -->
+        </div>
+
+    </div>
 </div>

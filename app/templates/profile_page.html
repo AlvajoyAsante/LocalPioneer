@@ -12,97 +12,79 @@
         filter: blur(2px);
         -webkit-filter: blur(2px);
     }
-
-    .user-image {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        background: #ddd;
-        border: 5px solid white;
-        position: relative;
-        top: -50px;
-    }
-
-    .interests .badge {
-        padding: 10px 15px;
-        font-size: 1em;
-        background-color: #e0e0e0;
-        border-radius: 20px;
-        color: #333;
-    }
-
-    .post-image {
-        width: 100%;
-        height: 300px;
-        background: #ddd;
-        margin-top: 10px;
-    }
-
-    .caption {
-        font-size: 0.9em;
-        color: #555;
-    }
-
-    .card_color { 
-        background-color: #F2EED7;
-    }
-
 </style>
 
 <div class="container mt-4 mb-4">
     <div class="card container_card p-4 shadow-sm">
         <div class="banner"></div>
         <div class="d-flex align-items-center">
-            
-            <img src="..\static\img\pfp.png" alt="User Image" class="user-image">
-            
-            <div class="ms-3">
-                <h2 class="mb-1">Test</h2>
-                <p class="text-muted">Bio</p>
 
-                <!-- Add this to the right of the bio -->
-                <a href="/settings" class="ms-3">
-                    <button class="btn btn-primary"><i class="bi bi-gear"></i> Settings</button>
-                </a>
-                
-                <!-- Move this to the far right -->
-                <a href="/network" class="ms-auto">
-                    <button class="btn btn-primary">Network</button>
-                </a>
+            <img src="..\static\img\pfp.png" alt="User Image" class="user-image-profile">
 
-                <a>
-                    <button class="btn btn-primary">Message</button>
-                </a>
+            <div class="d-flex flex-column ms-3">
+                <div>
+                    <h2 class="mb-1">Test</h2>
+                    <p class="text-muted">Bio</p>
+                </div>
+                <div>
+                    <!-- Add this to the right of the bio -->
 
-                <a href="/logout">
-                    <button class="btn btn-primary">Logout</button>
-                </a>
+                    <a href="/settings" class="ms-3">
+                        <button class="btn btn-primary"><i class="bi bi-gear"></i> Settings</button>
+                    </a>
 
+                    <!-- Move this to the far right -->
+                    <a href="/network" class="ms-auto">
+                        <button class="btn btn-primary"><i class="bi bi-people"></i> Network</button>
+                    </a>
+
+                    <a href="/messages">
+                        <button class="btn btn-primary"><i class="bi bi-chat-dots"></i> Message</button>
+                    </a>
+
+                    <a href="/logout">
+                        <button class="btn btn-primary"><i class="bi bi-box-arrow-right"></i> Logout</button>
+                    </a>
+
+                </div>
+            </div>
+    </div>
+
+
+    <p class="mt-5">
+        <h4>Interests</h4>
+    </p>
+
+    <div class="interests d-flex justify-content-around mt-3">
+        <span class="badge">#1</span>
+        <span class="badge">#2</span>
+        <span class="badge">#3</span>
+        <span class="badge">#4</span>
+    </div>
+
+
+    <p class="mt-5">
+    <h4>Posts / Recent Activity</h4>
+    </p>
+
+    {% for i in range(10) %}
+    <div class="post-card">
+        <div class="post-header">
+            <img src="../static/img/pfp.png" alt="User Image" class="user-image" width="50" height="50">
+            <div class="post-user-info">
+                <h5 class="post-user-name">John Doe</h5>
+                <p class="post-user-title">Loving neighbor</p>
             </div>
         </div>
-
-        <div class="interests d-flex justify-content-around mt-3">
-            <span class="badge">#1</span>
-            <span class="badge">#2</span>
-            <span class="badge">#3</span>
+        <p class="post-text">Here’s an example post on this feed page. This text represents the content of the
+            post and can include descriptions, insights, or any other text-based content.</p>
+        <div class="post-actions">
+            <button class="btn btn-light">Like</button>
+            <button class="btn btn-light">Comment</button>
+            <button class="btn btn-light">Share</button>
         </div>
-
-
-        <p class="mt-5"><h4>Posts / Recent Activity</h4></p>
-        
-        {% for i in range(30) %}
-        {% if i % 3 == 0 %} 
-        <div class="recent-activity mt-4 p-3 bg-light rounded">
-            <h4>A Recent Activity</h4>
-        </div>
-        {% else %}
-        <div class="posts mt-4">
-           
-            <div class="post-image">Image</div>
-            <div class="caption mt-2">Caption</div>
-        </div>
-        {% endif %}
-        {% endfor %}
-
     </div>
+    {% endfor %}
+
+</div>
 </div>
