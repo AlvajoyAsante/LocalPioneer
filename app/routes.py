@@ -75,9 +75,9 @@ def delete_profile():
 def settings():
     return render_template("main.html", page_name="settings")
 
-@main.route('/message')
-def message():
-    return render_template("main.html", page_name="message")
+@main.route('/messages')
+def messages():
+    return render_template("main.html", page_name="messages")
 
 @main.route('/follow')
 def follow():
