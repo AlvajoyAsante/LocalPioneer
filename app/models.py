@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.extensions import Base
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Time, ForeignKey, Float
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, Time, ForeignKey, Float, LargeBinary
 
 class User(Base):
     __tablename__ = 'user'
@@ -22,8 +22,6 @@ class User(Base):
     background_image = Column(String(100), nullable=True)
 
     # Permissions
-    is_volunteer = Column(Boolean, default=False)
-    is_organizer = Column(Boolean, default=False)
     is_active = Column(Boolean, default=True)
     is_staff = Column(Boolean, default=False)
     is_superuser = Column(Boolean, default=False)
@@ -60,7 +58,7 @@ class Event(Base):
     location = Column(String(100), nullable=False)
     date = Column(DateTime, nullable=False)
     time = Column(Time, nullable=False)
-    image = Column(String(100), nullable=True)
+    image = Column(LargeBinary)
     
     # Flags for event status
     is_active = Column(Boolean, default=True)
