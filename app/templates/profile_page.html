@@ -61,29 +61,33 @@
         <h4>Interests</h4>
     </p>
 
+    {% if user.interests %}
+
     <div class="interests d-flex justify-content-around mt-3">
-        <span class="badge">#1</span>
-        <span class="badge">#2</span>
-        <span class="badge">#3</span>
-        <span class="badge">#4</span>
+        {% for interest in user.interests.split(",") %}
+        <span class="badge">{{interest}}</span>
+        {% endfor %}
     </div>
+
+    {% else %}
+    <p>This user has not set any interests yet.</p>
+    {% endif %}
 
 
     <p class="mt-5">
     <h4>Posts / Recent Activity</h4>
     </p>
 
-    {% for i in range(10) %}
+    {% for i in range(1) %}
     <div class="post-card">
         <div class="post-header">
             <img src="../static/img/pfp.png" alt="User Image" class="user-image" width="50" height="50">
             <div class="post-user-info">
-                <h5 class="post-user-name">John Doe</h5>
-                <p class="post-user-title">Loving neighbor</p>
+                <h5 class="post-user-name">{{user.first_name + ' ' + user.last_name}}</h5>
+                <p class="post-user-title"></p>
             </div>
         </div>
-        <p class="post-text">Here’s an example post on this feed page. This text represents the content of the
-            post and can include descriptions, insights, or any other text-based content.</p>
+        <p class="post-text">Hey, today I joined Local Pioneers and am new the platform. Whats up?.</p>
         <div class="post-actions">
             <button class="btn btn-light">Like</button>
             <button class="btn btn-light">Comment</button>

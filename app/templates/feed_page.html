@@ -20,20 +20,16 @@
         <!-- Scrollable Feed Section -->
         <div class="mt-4 mb-4">
             <!-- Post Cards -->
-            {%set org_name = ["Organization 1", "Organization 2", "Organization 3", "Organization 4", "Organization
-            5"]%}
+            {%set org_name = ["Neighborhood Liaisons", "Build A Home!", "Beast Cancer Awareness - Durham", "Rewild Carolina", "Orange County Schools"]%}
             {%set org_icon = ["event_org_1.png","event_org_2.png","event_org_3.png","event_org_4.png","event_org_5.png"]
             %}
             {%set org_post_image = ["event_outing_1.jpeg", "event_outing_2.jpeg", "event_outing_3.jpeg",
             "event_outing_4.jpeg", "event_outing_5.jpeg"]%}
-            {%set org_description = ["Here’s an example post on this feed page. This text represents the content of the
-            post and can include descriptions, insights, or any other text-based content.", "Here’s an example post on
-            this feed page. This text represents the content of the post and can include descriptions, insights, or any
-            other text-based content.", "Here’s an example post on this feed page. This text represents the content of
-            the post and can include descriptions, insights, or any other text-based content.", "Here’s an example post
-            on this feed page. This text represents the content of the post and can include descriptions, insights, or
-            any other text-based content.", "Here’s an example post on this feed page. This text represents the content
-            of the post and can include descriptions, insights, or any other text-based content."] %}
+            {%set org_description = ["We are so glad that over 25 people showed up to our community walk to help spread awareness of the food desserts that exist within our city. Please reach out if you want to get involed too!",
+             "I had a lot of fun attneding the home builder workshop today! Here I got learn how to collaborate in a team to build small housing units to combat homelessess. This was a great and informative experience when it came the challenges of running this intiative and how we can work together to overcome them.", 
+             "Join Durham's Beast Cancer Awareness Campaign, we have weekly meetings on Thurdays at city hall through the month of October. Feel free to reach out if you want to join in or if you'd ike to march with us on October 24!",
+             "Consider participating in the Chapel-Hill rewilding campaign, as we work to clean up spaces to help perserve local ecosystems and increase biodiviersity. Feel free to pop by if if you are interested, we will provide supplies and training and don't worry this is casual and not super high commitment - we stand for green and fun :)",
+             "Are in high-school, and looking to earn extra credit for classes? Orange county schools is now promoting a comunity service campaign where students gain extra credit for service hours. Sign up today and repost to a friend!"] %}
 
             {% for i in range(5) %}
 
@@ -42,7 +38,7 @@
                     <img src="../static/img/{{org_icon[i]}}" alt="User Image" class="user-image" width="50" height="50">
                     <div class="post-user-info">
                         <h5 class="post-user-name">{{org_name[i]}}</h5>
-                        <p class="post-user-title">Loving neighbor</p>
+                        <p class="post-user-title"></p>
                     </div>
                 </div>
                 <div class="post-image">

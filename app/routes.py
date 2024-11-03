@@ -79,8 +79,6 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
 
-        session['user_id'] = new_user.id
-
         return redirect(url_for('main.home'))
 
     return render_template("main.html", page_name="signup")
