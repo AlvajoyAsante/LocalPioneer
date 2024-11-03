@@ -61,12 +61,17 @@
         <h4>Interests</h4>
     </p>
 
+    {% if user.interests %}
+
     <div class="interests d-flex justify-content-around mt-3">
-        <span class="badge">#1</span>
-        <span class="badge">#2</span>
-        <span class="badge">#3</span>
-        <span class="badge">#4</span>
+        {% for interest in user.interests.split(",") %}
+        <span class="badge">{{interest}}</span>
+        {% endfor %}
     </div>
+
+    {% else %}
+    <p>This user has not set any interests yet.</p>
+    {% endif %}
 
 
     <p class="mt-5">
