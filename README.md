@@ -25,7 +25,7 @@ This submission is for the HackNC 2024 project. Local Pioneer is a social applic
 Add Text
 
 ## Usage
-This is a prototype of a web applicaton. It will be deployed temporaryly as a demo for the HACK NC presentation. At most you can review our code for insiration or to have a technical understanding of our project.
+This is a prototype of a web application. It will be deployed temporarily as a demo for the HackNC presentation. At most you can review our code for inspiration or to have a technical understanding of our project.
 
 ## Credits
 ### API Usage
@@ -41,16 +41,16 @@ Generative AI was used in the code base of the project. The following are listed
 
 ## Contributors
 ### Alvajoy Asante
-**Computer Science Student** at Univeristy of North Carolina at Charlotte | Class of 2026<br>
+**Computer Science Student** at University of North Carolina at Charlotte | Class of 2026<br>
 Contacts: aasante@charlotte.edu | github.com/AlvajoyAsante
 
 ### Ayemhenre Isikhuemhen
-**Computer Science Student**at University of North Carolina at Charlotte | Class of 2026<br>
+**Computer Science Student** at University of North Carolina at Charlotte | Class of 2026<br>
 Contacts: aisikhue@charlotte.edu | github.com/Taotlema
 
 ### Connor Floyd
 **Computer Science Student** at University of South Carolina at Beaufort | Class of 2027<br>
-Contacts: connorthefudge@gmail.com | github.com/xenoyle
+Contacts: connorwfloyd@gmail.com | github.com/xenoyle
 
 ### Eisa Chaudhary
 **Computer Science Student** at University of South Carolina at Beaufort | Class of 2025<br>
