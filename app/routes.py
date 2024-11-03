@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for
+from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for, request
 from app.models import User, Event, Map
 from app.extensions import db
 from sqlalchemy import func, and_
@@ -9,7 +9,7 @@ main = Blueprint("main", __name__)
 
 # Main Routes 
 @main.route('/', methods=['GET', 'POST'])
-def home(request):
+def home():
 
     if request.method == 'POST':
         if 'user_id' in session:
@@ -20,11 +20,11 @@ def home(request):
     return render_template("main.html", page_name="feed_page") 
 
 @main.route('/forgot_password', methods=['GET', 'POST'])
-def forgot_pass(request):
+def forgot_pass():
     return render_template("main.html", page_name="forgot_password")
 
 @main.route('/login', methods=['GET', 'POST'])
-def login(request):
+def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -38,7 +38,7 @@ def login(request):
     return render_template("main.html", page_name="login") 
 
 @main.route('/signup', methods=['GET', 'POST'])
-def signup(request):
+def signup():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -58,7 +58,7 @@ def signup(request):
     return render_template("main.html", page_name="signup")
 
 @main.route('/profile', methods=['GET', 'POST'])
-def profile(request):
+def profile():
     if 'user_id' not in session:
         return redirect(url_for('main.login'))
 

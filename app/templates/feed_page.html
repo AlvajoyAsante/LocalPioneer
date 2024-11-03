@@ -18,23 +18,45 @@
         </div>
 
         <!-- Scrollable Feed Section -->
-        <div class="scrollable-content">
-            <div class="post-card">
+        <div class="mt-4 mb-4">
+            <!-- Post Cards -->
+            {%set org_name = ["Organization 1", "Organization 2", "Organization 3", "Organization 4", "Organization
+            5"]%}
+            {%set org_icon = ["event_org_1.png","event_org_2.png","event_org_3.png","event_org_4.png","event_org_5.png"]
+            %}
+            {%set org_post_image = ["event_outing_1.jpeg", "event_outing_2.jpeg", "event_outing_3.jpeg",
+            "event_outing_4.jpeg", "event_outing_5.jpeg"]%}
+            {%set org_description = ["Here’s an example post on this feed page. This text represents the content of the
+            post and can include descriptions, insights, or any other text-based content.", "Here’s an example post on
+            this feed page. This text represents the content of the post and can include descriptions, insights, or any
+            other text-based content.", "Here’s an example post on this feed page. This text represents the content of
+            the post and can include descriptions, insights, or any other text-based content.", "Here’s an example post
+            on this feed page. This text represents the content of the post and can include descriptions, insights, or
+            any other text-based content.", "Here’s an example post on this feed page. This text represents the content
+            of the post and can include descriptions, insights, or any other text-based content."] %}
+
+            {% for i in range(5) %}
+
+            <div class="post-card mb-3">
                 <div class="post-header">
-                    <img src="../static/img/pfp.png" alt="User Image" class="user-image" width="50" height="50">
+                    <img src="../static/img/{{org_icon[i]}}" alt="User Image" class="user-image" width="50" height="50">
                     <div class="post-user-info">
-                        <h5 class="post-user-name">John Doe</h5>
+                        <h5 class="post-user-name">{{org_name[i]}}</h5>
                         <p class="post-user-title">Loving neighbor</p>
                     </div>
                 </div>
-                <p class="post-text">Here’s an example post on this feed page. This text represents the content of the
-                    post and can include descriptions, insights, or any other text-based content.</p>
+                <div class="post-image">
+                    <img src="../static/img/{{org_post_image[i]}}" alt="Post Image" class="post-image-content"
+                        width="100%" height="300px" style="object-fit: cover;">
+                </div>
+                <p class="post-text">{{org_description[i]}}</p>
                 <div class="post-actions">
                     <button class="btn btn-light">Like</button>
                     <button class="btn btn-light">Comment</button>
                     <button class="btn btn-light">Share</button>
                 </div>
             </div>
+            {% endfor %}
             <!-- Repeat this .post-card div for additional posts -->
         </div>
 
