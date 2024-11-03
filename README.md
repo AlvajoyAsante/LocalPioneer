@@ -4,6 +4,17 @@ A community volunteering web application
 ## About the Project
 This submission is for the HackNC 2024 project. Local Pioneer is a social application designed to connect members of a community and promote involvement in community service and addressing shared issues. In many cases, our cities and towns are too vast and fragmented to effectively advocate for service or tackle problems together. This platform will allow users to develop genuine connections with others in their specific communities of interest, as well as discover opportunities to enhance their skills through volunteer work and participate in events dedicated to improving their communities.
 
+## Local Pioneer Installation Instructions
+
+### 1. Have python and pip installed on your command line
+
+### 2. Run "pip install -r requirements.txt" in the repository
+If you already have all of the requirements installed, this is optional.
+
+### 3. Run "python run.py" in the repository or equivalent for your machine
+
+### 4. Go to the local host provided by Flask in the console on a web browser
+
 ## Table of Contents
 - [TechStack](#techstack)
 - [Usage](#usage)
