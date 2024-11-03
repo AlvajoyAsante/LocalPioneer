@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, session
 from app.models import User, Event, Map
 from app.extensions import db
 from sqlalchemy import func, and_
@@ -8,51 +8,79 @@ main = Blueprint("main", __name__)
 
 
 # Main Routes 
-@main.route('/')
-def home():
-    # Check if the user is logged in
-    # If the user is logged in, show the feed page
-    # If the user is not logged in, show the login page    
+@main.route('/', methods=['GET', 'POST'])
+def home(request):
 
+    if request.method == 'POST':
+        if 'user_id' in session:
+            return render_template("main.html", page_name="feed_page")
+        else:
+            return render_template("main.html", page_name="login")
 
     return render_template("main.html", page_name="feed_page") 
 
-@main.route('/forgot_password')
-def forgot_pass():
+@main.route('/forgot_password', methods=['GET', 'POST'])
+def forgot_pass(request):
     return render_template("main.html", page_name="forgot_password")
 
+@main.route('/login', methods=['GET', 'POST'])
+def login(request):
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = User.query.filter_by(email=email).first()
+        if user and user.check_password(password):
+            session['user_id'] = user.id
+            return render_template("main.html", page_name="feed_page")
+        else:
+            return render_template("main.html", page_name="login")
 
-@main.route('/login')
-def login():
     return render_template("main.html", page_name="login") 
 
-@main.route('/signup')
-def signup():
+@main.route('/signup', methods=['GET', 'POST'])
+def signup(request):
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = User.query.filter_by(email=email).first()
+        if user:
+            return render_template("main.html", page_name="signup")
+        else:
+            new_user = User(email=email)
+            new_user.set_password(password)
+            db.session.add(new_user)
+            db.session.commit()
+
+            session['user_id'] = user.id
+
+            return render_template("main.html", page_name="feed_page")
+
     return render_template("main.html", page_name="signup")
 
-@main.route('/profile')
-def profile():
-    return render_template("main.html", page_name="profile")
+@main.route('/profile', methods=['GET', 'POST'])
+def profile(request):
+    user = User.query.get(session['user_id']).first()
+    return render_template("main.html", page_name="profile", user=user)
 
 @main.route('/map')
 def map():
     return render_template("main.html", page_name="map")
 
-@main.route('/network')
+@main.route('/network', methods=['GET', 'POST'])
 def network():
     return render_template("main.html", page_name="network")
 
-@main.route('/logout')
+@main.route('/logout', methods=['GET', 'POST'])
 def logout():
     return render_template("main.html", page_name="logout")
 
 # Organization pages
 
-@main.route('/create_event')
+@main.route('/create_event', methods=['GET', 'POST'])
 def create_event():
     return render_template("main.html", page_name="create_event")
 
-@main.route('/edit_event')
+@main.route('/edit_event', methods=['GET', 'POST'])
 def edit_event():
     return render_template("main.html", page_name="edit_event")
 
@@ -89,14 +117,14 @@ def unfollow():
     pass 
     # return render_template("main.html", page_name="unfollow")
 
-@main.route('/search')
-def search():
-    pass 
+# @main.route('/search')
+# def search():
+#     pass 
     # return render_template("main.html", page_name="search")
     
-@main.route('/notifications')
-def notifications():
-    pass 
+# @main.route('/notifications')
+# def notifications():
+#     pass 
     # return render_template("main.html", page_name="notifications")
 
 # API Routes
