@@ -56,7 +56,7 @@ AI-Assisted Content:
 logo.png - Image generation  
 map.html - JavaScript and some CSS  
 routes.py -  API Routes in Python  
-\__init__.py - Placeholder Data in Python  
+'__init__'.py - Placeholder Data in Python  
 
 
 
