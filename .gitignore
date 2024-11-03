@@ -30,8 +30,8 @@ sdist/
 *.egg
 
 # Database files
-*.db
-*.sqlite3
+# *.db
+# *.sqlite3
 
 # Logs and debugging files
 *.log
@@ -48,7 +48,7 @@ logs/
 # media/
 
 # Flask session and cache
-instance/
+# instance/
 *.session
 *.cache
 __pycache__/
