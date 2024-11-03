@@ -1,113 +1,54 @@
-/*Body Styling*/
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        .header-title {
+            font-size: 2.5rem; /* Adjust font size */
+            text-align: center; /* Center align the text */
+            margin-bottom: -50px; /* Overlap the card */
+            position: relative; /* Position relative for overlapping */
+            z-index: 1; /* Make sure header is above card */
+        }
+        .card {
+            position: relative;
+            z-index: 0; /* Card behind the header */
+        }
+    </style>
 
-    /*banner image styling*/
-    .banner-image {
-        width: 100%;
-        height: 200px;
-        background-color: #bbb;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 24px;
-    }
-
-    /*Header Styling*/
-    h1 {
-        font-size: 24px;
-        margin: 20px 0;
-    }
-
-    /*lines under the header*/
-    title-line {
-        width: 100%;
-        height: 2px;
-        background-color: #333;
-        margin: 0;
-    }
-
-    /*Spacing under the headers*/
-    .section-spacing {
-        margin-bottom: 40px;
-    }
-
-    /*Container for user profile*/
-    .user-list {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-    /*user information styling*/
-    .user {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        width: 80%;
-        max-width: 400px;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-    }
-
-    /*profile picture styling - circle*/
-    .profile-pic {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background-color: #ccc;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 20px;
-        color: white;
-    }
-
-    /*Container username and interests - maybe change to name*/
-    .user-info {
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Container for interest tags */
-    .interests {
-        display: flex;
-        gap: 5px;
-        margin-top: 5px;
-    }
-
-    /* Styling for individual interest bubbles */
-    .interest {
-        padding: 5px 10px;
-        background-color: #e0e0e0;
-        border-radius: 12px;
-        font-size: 12px;
-    }
-<div class="container mt-4 mb-4">
-    <h2 class="mb-4">Settings</h2>
-    <form action="/update-settings" method="POST">
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+    <div class="container mt-4 mb-4">
+        <div class="d-flex justify-content-left mb-4">
+            <button class="btn btn-primary" onclick="history.back()">
+                <i class="bi bi-arrow-left"></i> Back
+            </button>
         </div>
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+        <h2 class="header-title">Settings</h2>
+        
+        <!-- Card for the settings form -->
+        <div class="card p-4 shadow-sm">
+            <form action="/update-settings" method="POST">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter new password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="confirm_password" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter new password" required>
-        </div>
-        <div class="mb-3">
-            <label for="confirm_password" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-    </form>
-</div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+</html>
