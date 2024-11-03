@@ -15,6 +15,11 @@ def home():
 
     return render_template("main.html", page_name="feed_page") 
 
+@main.route('/forgot_password')
+def forgot_pass():
+    return render_template("main.html", page_name="forgot_password")
+
+
 @main.route('/login')
 def login():
     return render_template("main.html", page_name="login") 

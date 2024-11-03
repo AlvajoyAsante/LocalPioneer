@@ -1,43 +1,34 @@
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-    }
-
-    .profile-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    .banner {
+        width: 100%;
+        height: 200px;
+        background-color: #3b5998;
+        /* Optional: use a solid color */
+        background-image: url('https://www.monstertreeservice.com/cms/thumbnails/24/1080x540/images/articles/MTS_OUW_FiveTypesofFastGrowingTrees_BlogPhoto_Jun23_20230531.jpg');
+        /* Replace with your image path */
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        filter: blur(2px);
+        -webkit-filter: blur(2px);
     }
 
     .user-image {
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
         background: #ddd;
+        border: 5px solid white;
+        position: relative;
+        top: -50px;
     }
 
-    .bio {
-        flex-grow: 1;
-        margin-left: 20px;
-    }
-
-    .interests {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 10px;
-    }
-
-    .interest {
+    .interests .badge {
         padding: 10px 15px;
+        font-size: 1em;
         background-color: #e0e0e0;
         border-radius: 20px;
-    }
-
-    .posts {
-        margin-top: 20px;
+        color: #333;
     }
 
     .post-image {
@@ -48,62 +39,70 @@
     }
 
     .caption {
-        margin-top: 5px;
         font-size: 0.9em;
         color: #555;
     }
 
-    .recent-activity {
-        margin-top: 20px;
-        padding: 15px;
-        background-color: #f9f9f9;
-        border-radius: 8px;
+    .card_color { 
+        background-color: #F2EED7;
     }
 
-    .create-profile {
-        margin-top: 20px;
-        padding: 15px;
-        background-color: #f9f9f9;
-        border-radius: 8px;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    .form-group input {
-        width: calc(100% - 22px);
-        padding: 10px;
-        font-size: 1em;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
 </style>
 
-<div class="container">
-    <div class="profile-header">
-        <div class="user-image"></div>
-        <div class="bio">
-            <h2>USER NAME</h2>
-            <p>Bio</p>
+<div class="container mt-4 mb-4">
+    <div class="card container_card p-4 shadow-sm">
+        <div class="banner"></div>
+        <div class="d-flex align-items-center">
+            
+            <img src="..\static\img\pfp.png" alt="User Image" class="user-image">
+            
+            <div class="ms-3">
+                <h2 class="mb-1">Test</h2>
+                <p class="text-muted">Bio</p>
+
+                <!-- Add this to the right of the bio -->
+                <a href="/settings" class="ms-3">
+                    <button class="btn btn-primary"><i class="bi bi-gear"></i> Settings</button>
+                </a>
+                
+                <!-- Move this to the far right -->
+                <a href="/network" class="ms-auto">
+                    <button class="btn btn-primary">Network</button>
+                </a>
+
+                <a>
+                    <button class="btn btn-primary">Message</button>
+                </a>
+
+                <a href="/logout">
+                    <button class="btn btn-primary">Logout</button>
+                </a>
+
+            </div>
         </div>
-        <button>Network</button>
-    </div>
 
-    <div class="interests">
-        <div class="interest">#1</div>
-        <div class="interest">#2</div>
-        <div class="interest">#3</div>
-    </div>
+        <div class="interests d-flex justify-content-around mt-3">
+            <span class="badge">#1</span>
+            <span class="badge">#2</span>
+            <span class="badge">#3</span>
+        </div>
 
-    <div class="posts">
-        <h3>Posts</h3>
-        <div class="post-image">Image</div>
-        <div class="caption">Caption</div>
-    </div>
 
-    <div class="recent-activity">
-        <h3>Recent Activity</h3>
-        <!-- Add recent activities here -->
+        <p class="mt-5"><h4>Posts / Recent Activity</h4></p>
+        
+        {% for i in range(30) %}
+        {% if i % 3 == 0 %} 
+        <div class="recent-activity mt-4 p-3 bg-light rounded">
+            <h4>A Recent Activity</h4>
+        </div>
+        {% else %}
+        <div class="posts mt-4">
+           
+            <div class="post-image">Image</div>
+            <div class="caption mt-2">Caption</div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
     </div>
 </div>

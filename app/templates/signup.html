@@ -20,7 +20,11 @@
     }
 </style>
 
-<div>
+
+
+
+
+<div class="">
     <div class="container" style="width: 80vh;">
         <!-- Logo centered above the form -->
         <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo" width="200px">
@@ -98,7 +102,7 @@
                     <div style="padding: 5px;">
                         <input type="checkbox" value="" id="Fundraiser">
                         <label for="Fundraiser"></label>
-                            Fundraiser
+                        Fundraiser
                         </label>
                     </div>
                 </div>
@@ -107,12 +111,12 @@
 
             <!-- Submit button -->
             <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"
-                style="background-color: #687a50;">Register</button>
+                style="background-color: #687a50 !important;">Register</button>
 
 
             <!-- Register buttons -->
             <div class="text-center" style="padding-bottom: 50px;">
-                <p>Have an account? <a href="#!">Login</a></p>
+                <p>Have an account? <a href="/login">Login</a></p>
             </div>
         </form>
     </div>

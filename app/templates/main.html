@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 
+    {% if page_name == "map" %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    {% endif %}
+
     <style>
         body {
             font-family: 'Arial';
@@ -60,7 +65,7 @@
     <!-- Nav bar -->
     {% if page_name not in ["login","signup"] %}
     <nav class="navbar navbar-expand-lg navbar-dark justify-content-center sticky-top flex-column">
-        <center><a class="navbar-brand" href="#">Local Pioneer</a></center>
+        <center><a class="navbar-brand" href="/">Local Pioneer</a></center>
         <ul class="navbar-nav ">
             <li class="nav-item">
                 <a href="/map"><i class="bi bi-map h3" style="color: #FFFFFF;"></i></a>

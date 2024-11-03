@@ -1,147 +1,148 @@
-<!DOCTYPE html>
-<html>
+<style>
+    /*Body Styling*/
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
 
-<head>
-    <title>Network</title>
-    <style>
-        /*Body Styling*/
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+    /*banner image styling*/
+    .banner-image {
+        width: 100%;
+        height: 200px;
+        background-color: #bbb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+    }
 
-        /*banner image styling*/
-        .banner-image {
-            width: 100%;
-            height: 200px;
-            background-color: #bbb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-        }
+    /*Header Styling*/
+    h1 {
+        font-size: 24px;
+        margin: 20px 0;
+    }
 
-        /*Header Styling*/
-        h1 {
-            font-size: 24px;
-            margin: 20px 0;
-        }
+    /*lines under the header*/
+    title-line {
+        width: 100%;
+        height: 2px;
+        background-color: #333;
+        margin: 0;
+    }
 
-        /*lines under the header*/
-        title-line {
-            width: 100%;
-            height: 2px;
-            background-color: #333;
-            margin: 0;
-        }
+    /*Spacing under the headers*/
+    .section-spacing {
+        margin-bottom: 40px;
+    }
 
-        /*Spacing under the headers*/
-        .section-spacing {
-            margin-bottom: 40px;
-        }
+    /*Container for user profile*/
+    .user-list {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
 
-        /*Container for user profile*/
-        .user-list {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
+    /*user information styling*/
+    .user {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 80%;
+        max-width: 400px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
 
-        /*user information styling*/
-        .user {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            width: 80%;
-            max-width: 400px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
+    /*profile picture styling - circle*/
+    .profile-pic {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: white;
+    }
 
-        /*profile picture styling - circle*/
-        .profile-pic {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #ccc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            color: white;
-        }
+    /*Container username and interests - maybe change to name*/
+    .user-info {
+        display: flex;
+        flex-direction: column;
+    }
 
-        /*Container username and interests - maybe change to name*/
-        .user-info {
-            display: flex;
-            flex-direction: column;
-        }
+    /* Container for interest tags */
+    .interests {
+        display: flex;
+        gap: 5px;
+        margin-top: 5px;
+    }
 
-        /* Container for interest tags */
-        .interests {
-            display: flex;
-            gap: 5px;
-            margin-top: 5px;
-        }
+    /* Styling for individual interest bubbles */
+    .interest {
+        padding: 5px 10px;
+        background-color: #e0e0e0;
+        border-radius: 12px;
+        font-size: 12px;
+    }
+</style>
 
-        /* Styling for individual interest bubbles */
-        .interest {
-            padding: 5px 10px;
-            background-color: #e0e0e0;
-            border-radius: 12px;
-            font-size: 12px;
-        }
-    </style>
-</head>
+<div class="container mt-4 mb-4">
+    
+    <div class="card container_card p-4 shadow-sm">
+        <div class="d-flex justify-content-left">
+            <button class="btn btn-primary" onclick="history.back()">
+                <i class="bi bi-arrow-left"></i> Back
+            </button>
+        </div>
+        
 
-<body>
-    <!-- Placeholder for full-width image banner -->
-    <div class="banner-image">
-        Placeholder Image Banner
-    </div>
+        <!-- Title for the "Your Circle" section -->
+        <h1>Your Circle</h1>
+        <div class="title-line"></div>
 
-    <!-- Title for the "Your Circle" section -->
-    <h1>Your Circle</h1>
-    <div class="title-line"></div>
-
-    <!-- Container for user profiles under "Your Circle" -->
-    <div class="user-list section-spacing">
-        <div class="user">
-            <div class="profile-pic">A</div>
-            <div class="user-info">
-                <p class="user-name">Alex Johnson</p>
-                <div class="interests">
-                    <span class="interest">Hiking</span>
-                    <span class="interest">Coding</span>
-                    <span class="interest">Photography</span>
+        <div class="d-flex justify-content-left section-spacing">
+            <div class="user mx-auto">
+                <div class="profile-pic">A</div>
+                <div class="user-info">
+                    <p class="user-name">Alex Johnson</p>
+                    <div class="interests">
+                        <span class="interest">Hiking</span>
+                        <span class="interest">Coding</span>
+                        <span class="interest">Photography</span>
+                    </div>
+                </div>
+            </div>
+            <div class="user mx-auto">
+                <div class="profile-pic">A</div>
+                <div class="user-info">
+                    <p class="user-name">Alex Johnson</p>
+                    <div class="interests">
+                        <span class="interest">Hiking</span>
+                        <span class="interest">Coding</span>
+                        <span class="interest">Photography</span>
+                    </div>
+                </div>
+            </div>
+            <div class="user mx-auto">
+                <div class="profile-pic">A</div>
+                <div class="user-info">
+                    <p class="user-name">Alex Johnson</p>
+                    <div class="interests">
+                        <span class="interest">Hiking</span>
+                        <span class="interest">Coding</span>
+                        <span class="interest">Photography</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Title for the "Meet Fellow Pioneers" section -->
-    <h1>Meet Fellow Pioneers</h1>
-    <div class="title-line"></div>
+    
 
-    <!-- Container for user profiles under "Meet Fellow Pioneers" -->
-    <div class="user-list section-spacing">
-        <div class="user">
-            <div class="profile-pic">B</div>
-            <div class="user-info">
-                <p class="user-name">Bella Cruz</p>
-                <div class="interests">
-                    <span class="interest">Reading</span>
-                    <span class="interest">Yoga</span>
-                    <span class="interest">Cooking</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</body>
-
-</html>
+</div>
