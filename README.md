@@ -6,7 +6,6 @@ This submission is for the HackNC 2024 project. Local Pioneer is a social applic
 
 ## Table of Contents
 - [TechStack](#techstack)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [Contributors](#contributors)
@@ -21,23 +20,20 @@ This submission is for the HackNC 2024 project. Local Pioneer is a social applic
 - ${\textsf{\color{purple}Flask}}$
 - ${\textsf{\color{purple}SQL Alchemy}}$
 
-## Installation
-Add Text
-
 ## Usage
 This is a prototype of a web application. It will be deployed temporarily as a demo for the HackNC presentation. At most you can review our code for inspiration or to have a technical understanding of our project.
 
 ## Credits
 ### API Usage
-In order to make our web application feasible within the technology and time constraints of the Hackathon.<br>
-**This will need to be cleaned up.***
-- Leaflet GeoSearch - https://github.com/smeijer/leaflet-geosearch | https://leafletjs.com/
-
+#### Leaflet
+Leaflet's map API was utlizied in the making of this project and would be used to complete the following.
+- **Map Initialization:** The map, centered on the US, is created with L.map, using OpenStreetMap tiles for interactive visuals.
+- **Address Search and Geocoding:** Users enter an address, which is geocoded via the Nominatim API. The map centers on the location when "Search" is clicked.
+- **Event Radius and Type Filters:** Users select a search radius (10–100 miles). L.circle draws a radius on the map, showing event boundaries. Checkboxes allow filtering by event type. Only relevant events within the radius are shown.
+- **Marker Display:*** Event markers appear on the map. "Display All Pins" shows all events, bypassing the radius filte
 
 ### AI Usage
-Generative AI was used in the code base of the project. The following are listed instances of usage and its purpose.
-**This will need to be cleaned up.**
-- Generative AI from Pixlr were used to generate the Local Pioneer logo.
+Generative AI was used in the code base of the project. Typicallying to expedite the learning and development process of the applications. The use of AI was used in creating HTML templates to then adjust and implement, and AI generated art from Pixlr for the logo of our project. AI would b used to help improve manually written material aswell.
 
 ## Contributors
 ### Alvajoy Asante
