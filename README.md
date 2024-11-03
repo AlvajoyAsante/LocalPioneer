@@ -52,11 +52,11 @@ Generative AI was used in the code base of the project, typically to expedite th
 
 AI Used - ChatGPT 4o, Blackbox, Claude 3.5 Sonnet
 
-AI-Assisted Content:
-logo.png - Image generation
-map.html - JavaScript and some CSS
-routes.py -  API Routes in Python
-__init__.py - Placeholder Data in Python
+AI-Assisted Content:  
+logo.png - Image generation  
+map.html - JavaScript and some CSS  
+routes.py -  API Routes in Python  
+__init__.py - Placeholder Data in Python  
 
 
 
