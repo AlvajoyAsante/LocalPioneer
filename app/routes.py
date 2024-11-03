@@ -69,6 +69,14 @@ def edit_profile():
 def delete_profile():
     return render_template("main.html", page_name="delete_profile")
 
+@main.route('/settings')
+def settings():
+    return render_template("main.html", page_name="settings")
+
+@main.route('/message')
+def message():
+    return render_template("main.html", page_name="message")
+
 @main.route('/follow')
 def follow():
     pass 
@@ -83,12 +91,7 @@ def unfollow():
 def search():
     pass 
     # return render_template("main.html", page_name="search")
-
-@main.route('/settings')
-def settings():
-    pass 
-    # return render_template("main.html", page_name="settings")
-
+    
 @main.route('/notifications')
 def notifications():
     pass 
