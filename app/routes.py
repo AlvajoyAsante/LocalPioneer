@@ -25,42 +25,42 @@ def forgot_pass():
 
 @main.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        user = User.query.filter_by(email=email).first()
-        if user and user.check_password(password):
-            session['user_id'] = user.id
-            return render_template("main.html", page_name="feed_page")
-        else:
-            return render_template("main.html", page_name="login")
+    # if request.method == 'POST':
+    #     email = request.form['email']
+    #     password = request.form['password']
+    #     user = User.query.filter_by(email=email).first()
+    #     if user and user.check_password(password):
+    #         session['user_id'] = user.id
+    #         return render_template("main.html", page_name="feed_page")
+    #     else:
+    #         return render_template("main.html", page_name="login")
 
     return render_template("main.html", page_name="login") 
 
 @main.route('/signup', methods=['GET', 'POST'])
 def signup():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        user = User.query.filter_by(email=email).first()
-        if user:
-            return render_template("main.html", page_name="signup")
-        else:
-            new_user = User(email=email)
-            new_user.set_password(password)
-            db.session.add(new_user)
-            db.session.commit() 
+    # if request.method == 'POST':
+    #     email = request.form['email']
+    #     password = request.form['password']
+    #     user = User.query.filter_by(email=email).first()
+    #     if user:
+    #         return render_template("main.html", page_name="signup")
+    #     else:
+    #         new_user = User(email=email)
+    #         new_user.set_password(password)
+    #         db.session.add(new_user)
+    #         db.session.commit() 
 
-            session['user_id'] = user.id
+    #         session['user_id'] = user.id
 
-            return render_template("main.html", page_name="feed_page")
+    #         return render_template("main.html", page_name="feed_page")
 
     return render_template("main.html", page_name="signup")
 
 @main.route('/profile', methods=['GET', 'POST'])
 def profile():
-    if 'user_id' not in session:
-        return redirect(url_for('main.login'))
+    # if 'user_id' not in session:
+    #     return redirect(url_for('main.login'))
 
     user = User.query.get(session['user_id']).first()
     return render_template("main.html", page_name="profile", user=user)
