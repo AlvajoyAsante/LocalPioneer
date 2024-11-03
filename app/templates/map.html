@@ -98,7 +98,6 @@
     }
 </style>
 
-
 <div class="center">
     <div id="map-page">
         <!-- Map Container -->
@@ -133,17 +132,27 @@
             </div>
             <div class="radius-control">
                 <select id="radius-select" class="form-select">
-                    <!-- Options will be added dynamically -->
+                    <option value="16">Within 16 km (~10 miles)</option>
+                    <option value="40">Within 40 km (~25 miles)</option>
+                    <option value="80">Within 80 km (~50 miles)</option>
+                    <option value="161">Within 161 km (~100 miles)</option>
                 </select>
+            </div>
+
+            <!-- New Checkbox to Display All Pins -->
+            <div class="checkbox-group">
+                <label class="checkbox-item">
+                    <input type="checkbox" id="display-all-checkbox">
+                    Display All Pins
+                </label>
             </div>
 
             <!-- Address Section -->
             <div class="address-section">
                 <div class="address-input-group">
                     <input type="text" id="address-bar" class="address-bar" placeholder="Enter address...">
+                    <button class="btn btn-primary" onclick="handleAddressSearch()">Search</button>
                 </div>
-
-                
             </div>
         </div>
     </div>
@@ -165,11 +174,11 @@
         // Update radius select options (roughly equivalent to 10, 25, and 50 miles)
         const radiusSelect = document.getElementById('radius-select');
         radiusSelect.innerHTML = `
-          <option value="16">Within 16 km (~10 miles)</option>
-          <option value="40">Within 40 km (~25 miles)</option>
-          <option value="80">Within 80 km (~50 miles)</option>
-          <option value="161">Within 161 km (~100 miles)</option>
-      `;
+              <option value="16">Within 16 km (~10 miles)</option>
+              <option value="40">Within 40 km (~25 miles)</option>
+              <option value="80">Within 80 km (~50 miles)</option>
+              <option value="161">Within 161 km (~100 miles)</option>
+          `;
 
         // Function to geocode address
         async function geocodeAddress(address) {
@@ -223,36 +232,74 @@
             if (userMarker) map.removeLayer(userMarker);
             if (radiusCircle) map.removeLayer(radiusCircle);
 
-            // Add user marker
-            userMarker = L.marker([userLat, userLng], {
-                icon: L.divIcon({
-                    className: 'user-location',
-                    html: '📍',
-                    iconSize: [25, 25]
-                })
-            }).addTo(map);
+            const displayAll = document.getElementById('display-all-checkbox').checked;
 
-            // Add radius circle
-            radiusCircle = L.circle([userLat, userLng], {
-                radius: radiusKm * 1000,
-                fillColor: '#007bff',
-                fillOpacity: 0.1,
-                color: '#007bff',
-                opacity: 0.3
-            }).addTo(map);
+            if (!displayAll) {
+                // Add user marker
+                userMarker = L.marker([userLat, userLng], {
+                    icon: L.divIcon({
+                        className: 'user-location',
+                        html: '📍',
+                        iconSize: [25, 25]
+                    })
+                }).addTo(map);
 
-            // Fit the map to show the entire circle with padding
-            map.fitBounds(radiusCircle.getBounds(), {
-                padding: [50, 50],
-                maxZoom: 20 // Prevent zooming in too close
-            });
+                // Add radius circle
+                radiusCircle = L.circle([userLat, userLng], {
+                    radius: radiusKm * 1000,
+                    fillColor: '#007bff',
+                    fillOpacity: 0.1,
+                    color: '#007bff',
+                    opacity: 0.3
+                }).addTo(map);
+
+                // Fit the map to show the entire circle with padding
+                map.fitBounds(radiusCircle.getBounds(), {
+                    padding: [50, 50],
+                    maxZoom: 20 // Prevent zooming in too close
+                });
+            }
 
             try {
-                // ... rest of your event fetching code ...
+                // Fetch event data from the backend
+                const response = await fetch('/api/map/coordinates');
+                const data = await response.json();
+
+                if (data.success) {
+                    data.markers.forEach(markerData => {
+                        if (displayAll || isWithinRadius(userLat, userLng, markerData.lat, markerData.lng, radiusKm)) {
+                            const marker = L.marker([markerData.lat, markerData.lng]).addTo(map);
+                            marker.bindPopup(`<b>${markerData.title}</b><br>${markerData.description}`);
+                            activeMarkers.push(marker);
+                        }
+                    });
+                } else {
+                    console.error('Error fetching event data:', data.error);
+                }
             } catch (error) {
                 console.error('Error fetching events:', error);
             }
         }
+
+        function isWithinRadius(userLat, userLng, eventLat, eventLng, radiusKm) {
+            const R = 6371; // Radius of the Earth in km
+            const dLat = (eventLat - userLat) * Math.PI / 180;
+            const dLng = (eventLng - userLng) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(userLat * Math.PI / 180) * Math.cos(eventLat * Math.PI / 180) *
+                Math.sin(dLng / 2) * Math.sin(dLng / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const distance = R * c; // Distance in km
+            return distance <= radiusKm;
+        }
+
+        // Add event listener to the display-all checkbox
+        document.getElementById('display-all-checkbox').addEventListener('change', () => {
+            const address = document.getElementById('address-bar').value.trim();
+            if (address) {
+                handleAddressSearch();
+            }
+        });
 
         // Add a search button
         const addressInputGroup = document.querySelector('.address-input-group');
