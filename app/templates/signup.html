@@ -33,7 +33,7 @@
         </div>
 
         <!-- Signup Form -->
-        <form method="post" action="{{ url_for('main.signup') }}">
+        <form method="POST" action="{{ url_for('main.signup') }}">
 
             <!-- Flash Messages -->
             {% with messages = get_flashed_messages() %}
