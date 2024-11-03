@@ -33,7 +33,7 @@ Leaflet's map API was utlizied in the making of this project and would be used t
 - **Marker Display:** Event markers appear on the map. "Display All Pins" shows all events, bypassing the radius filte
 
 ### AI Usage
-Generative AI was used in the code base of the project. Typicallying to expedite the learning and development process of the applications. The use of AI was used in creating HTML templates to then adjust and implement, and AI generated art from Pixlr for the logo of our project. AI would b used to help improve manually written material aswell.
+Generative AI was used in the code base of the project. Typicallying to expedite the learning and development process of the applications. The use of AI - ChatGPT was used in creating HTML templates for developers to then adjust and implement, and AI generated art from Pixlr for the logo of our project. AI would be used to help improve manually written material as well.
 
 ## Contributors
 ### Alvajoy Asante
