@@ -14,10 +14,71 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+    <style>
+        body {
+            font-family: 'Arial';
+            font-size: 22px;
+            background-color: #F6F6DB;
+        }
+
+        .navbar {
+            background-color: #38422B;
+            padding: 0px 10px 0px 10px;
+        }
+
+        .navbar-brand {
+            /* margin-right: 35px; */
+            font-size: 40px;
+            font-family: 'Script';
+            /* Apply the cursive font */
+        }
+
+        .nav-item {
+            margin-right: 50px;
+        }
+
+        @media only screen and (max-width: 990px) {
+
+            .navbar {
+                padding: 10px 10px 10px 10px;
+            }
+
+            .navbar-brand {
+                font-size: 20px;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
-    <!-- Cell Phone Screen -->
+    <!-- Nav bar -->
+    {% if page_name not in ["login","signup"] %}
+    <nav class="navbar navbar-expand-lg navbar-dark justify-content-center sticky-top flex-column">
+        <center><a class="navbar-brand" href="#">Local Pioneer</a></center>
+        <ul class="navbar-nav ">
+            <li class="nav-item">
+                <a href="/map"><i class="bi bi-map h3" style="color: #FFFFFF;"></i></a>
+            </li>
+            <li class="nav-item">
+                <a href="/"><i class="bi bi-house-fill h3" style="color: #FFFFFF;"></i></a>
+            </li>
+            <li class="nav-item">
+                <a href="/profile"><i class="bi bi-person-circle h3" style="color: #FFFFFF;"></i></a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- <nav class="navbar navbar-pills navbar-expand-lg navbar-light justify-content-center sticky-top">
+            
+    </nav> -->
+    {% endif %}
+
     <div>
         {% if page_name == "login" %}
         {% include 'login.html' %}
@@ -25,7 +86,7 @@
         {% include 'signup.html' %}
         {% elif page_name == "feed_page" %}
         {% include 'feed_page.html' %}
-        {% elif page_name == "profile_page" %}
+        {% elif page_name == "profile" %}
         {% include 'profile_page.html' %}
         {% elif page_name == "network" %}
         {% include 'network.html' %}
@@ -33,18 +94,6 @@
         {% include 'map.html' %}
         {% endif %}
 
-        <!-- Bottom Navigation
-        {% if page_name == "feed_page" or page_name == "profile_page" or page_name == "network" or page_name == "map" %}
-
-        <div class="bottom-nav">
-            <div class="alert alert-primary" role="alert">
-                A simple primary alert—check it out!
-              </div>
-            <div>b</div>
-            <div>c</div>
-        </div>
-
-        {% endif %} -->
     </div>
 
     <!-- Bootstrap JS -->
