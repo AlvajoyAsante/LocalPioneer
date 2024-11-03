@@ -75,7 +75,7 @@
     }
 
     .btn-primary {
-        background-color: #007bff;
+        background-color: #6c757d;
         color: white;
     }
 
@@ -300,14 +300,6 @@
                 handleAddressSearch();
             }
         });
-
-        // Add a search button
-        const addressInputGroup = document.querySelector('.address-input-group');
-        const searchButton = document.createElement('button');
-        searchButton.className = 'btn btn-primary';
-        searchButton.textContent = 'Search';
-        searchButton.onclick = handleAddressSearch;
-        addressInputGroup.appendChild(searchButton);
 
         // Initialize event listeners
         eventTypes.forEach(type => {
